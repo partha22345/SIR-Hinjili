@@ -821,7 +821,23 @@ tr:last-child td{border-bottom:none;}
   </div>
 
   <!-- ══════ AERO DRILL-DOWN OVERLAY ══════ -->
-  <div id="aero-overlay" style="position:fixed;inse// ── GITHUB CONFIG (update these with your details) ───────────────
+  
+  <!-- ══════ AERO DRILL-DOWN OVERLAY ══════ -->
+  <div id="aero-overlay" style="position:fixed;inset:0;background:#f0f2f8;z-index:800;display:none;overflow-y:auto;transform:translateX(100%);transition:transform .3s ease;">
+    <div style="background:#1a1a2e;color:white;padding:12px 22px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:10;">
+      <button onclick="closeAeroOverlay()" style="background:rgba(255,255,255,0.15);border:none;color:white;padding:6px 14px;border-radius:20px;cursor:pointer;font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px;">← Back</button>
+      <div>
+        <div style="font-size:15px;font-weight:600;" id="overlay-aero-title">AERO Details</div>
+        <div style="font-size:10.5px;opacity:0.5;" id="overlay-aero-sub">BLO Supervisor breakdown</div>
+      </div>
+    </div>
+    <div style="padding:16px 20px;max-width:1400px;margin:0 auto;" id="overlay-content"></div>
+  </div>
+
+</div><!-- end .main -->
+
+<script>
+// ── GITHUB CONFIG (update these with your details) ───────────────
 // Set your GitHub username and repository name below
 const GITHUB_CONFIG = {
   owner: 'partha22345',
@@ -2446,7 +2462,7 @@ async function loadFileFromGitHub(fileObj){
     const parsed = parseExcelRows(rows);
     if(parsed.length === 0) return;
 
-    // Extract date from filename e.g. Hinjili_2025-06-05.xlsx → "5 Jun 2025"
+    // Extract date from filename e.g. H131_20260609_18.xlsx → "9 Jun 2026 · 6 PM"
     // Parse format: Hinjili_131_YYYYMMDD_HHMM.xlsx
     const newFmt = fileObj.name.match(/_(\d{4})(\d{2})(\d{2})_(\d{2})(\d{2})/);
     const oldFmt = fileObj.name.match(/(\d{4}[-_]\d{2}[-_]\d{2})/);
@@ -2576,6 +2592,7 @@ function devLoadPrev(ev){
   });
 }
 </script>
+
 
 <!-- PWA Service Worker Registration -->
 <script>
