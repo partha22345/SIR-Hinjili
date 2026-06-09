@@ -57,13 +57,26 @@ body{
 /* Smooth scrolling on iOS */
 .main{-webkit-overflow-scrolling:touch;}
 /* Make tap targets bigger on mobile */
-@media(max-width:480px){.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;}.kpi-pct{font-size:20px;}.topbar h1{font-size:12px;}.vt-btn{padding:7px 8px;font-size:10px;}.ptab,.itab{font-size:10px;padding:7px 8px;}}
+@media(max-width:480px){.kpi-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:14px;}.kpi-pct{font-size:20px;}.topbar h1{font-size:12px;}.vt-btn{padding:7px 8px;font-size:10px;}.ptab,.itab{font-size:10px;padding:7px 8px;}}
 @media(max-width:768px){
   .vt-btn{padding:10px 12px;font-size:11px;}
   .achip{padding:7px 12px;}
   .kpi-pct{font-size:28px;}
   .kpi-grid{grid-template-columns:repeat(2,1fr);}
-  table{font-size:11px;}
+  table{font-size:11px;width:100%;border-collapse:collapse;}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%;}
+@media(max-width:768px){
+  table{font-size:10.5px;min-width:480px;}
+  th{padding:6px 7px;font-size:9px;}
+  td{padding:5px 7px;}
+  .pct-wrap{min-width:70px;}
+  .pct-lbl{font-size:10px;}
+  .booth-name{font-size:11px;}
+}
+@media(max-width:480px){
+  table{min-width:420px;}
+  .pct-wrap{min-width:60px;}
+}
   th,td{padding:6px 7px;}
 }
 body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f2f8;color:#1a1a2e;min-height:100vh;font-size:13px;}
@@ -132,7 +145,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f2f8;color:#1a1a2e;mi
 .itab.active-worst .itab-count{background:#fee2e2;color:#b91c1c;}
 .itab.active-imp .itab-count{background:#ede9fe;color:#6d28d9;}
 .itab.active-range .itab-count{background:#e0f2fe;color:#0369a1;}
-.ipanel{display:none;}.ipanel.active{display:block;}
+.ipanel{display:none;overflow-x:auto;-webkit-overflow-scrolling:touch;}.ipanel.active{display:block;}
 /* ── TABLE ── */
 table{width:100%;border-collapse:collapse;}
 th{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#94a3b8;padding:8px 10px;border-bottom:1.5px solid #f1f5f9;text-align:left;white-space:nowrap;background:#fafbfe;user-select:none;}
@@ -208,6 +221,9 @@ tr:last-child td{border-bottom:none;}
 .mkpi .val{font-size:20px;font-weight:700;color:#1a1a2e;line-height:1.1;}
 .mkpi .sub{font-size:10px;color:#a0aabc;margin-top:2px;}
 .mkpi.blue .val{color:#185FA5;}.mkpi.green .val{color:#0f6e56;}.mkpi.amber .val{color:#9a6010;}.mkpi.teal .val{color:#127A61;}.mkpi.pink .val{color:#993556;}
+.sup-chart-btn{padding:4px 12px;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;border:1.5px solid #dde2f0;background:#f8fafc;color:#64748b;transition:all .15s;}
+.sup-chart-btn:hover{border-color:#185FA5;color:#185FA5;}
+.active-chart-btn{background:#185FA5;color:white;border-color:#185FA5;}
 .hidden{display:none!important;}
 /* ── DEV LOGIN ── */
 #dev-btn{
@@ -261,6 +277,7 @@ tr:last-child td{border-bottom:none;}
 .dev-status b{color:rgba(255,255,255,0.6);}
 
 @media(max-width:1100px){.kpi-grid{grid-template-columns:repeat(3,1fr);}.chart-grid{grid-template-columns:1fr;}}
+
 @media(max-width:700px){.kpi-grid{grid-template-columns:repeat(2,1fr);}}
 
 /* Upload dropdown */
@@ -608,23 +625,15 @@ tr:last-child td{border-bottom:none;}
 
     <!-- Filter chips card -->
     <div style="background:white;border-radius:10px;border:0.5px solid #e2e6f0;padding:14px 18px;margin-bottom:14px;">
-
-      <!-- Row 1: AERO filter -->
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px;">
         <span style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#1a1a2e;flex-shrink:0;min-width:56px;background:#f1f5f9;padding:3px 8px;border-radius:5px;">AEROs</span>
         <div id="sup-aero-chips" style="display:flex;gap:6px;flex-wrap:wrap;flex:1;"></div>
       </div>
-
-      <!-- Divider -->
       <div style="height:1px;background:#e2e8f0;margin:10px 0;"></div>
-
-      <!-- Row 2: Supervisor filter -->
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px;">
         <span style="font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#64748b;flex-shrink:0;min-width:56px;">Supervisors</span>
         <div id="sup-chip-bar" style="display:flex;gap:6px;flex-wrap:wrap;flex:1;"></div>
       </div>
-
-      <!-- Select All / Reset -->
       <div style="display:flex;gap:8px;">
         <button onclick="selectAllSups()" style="padding:5px 14px;background:#1a1a2e;color:white;border:none;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;">✓ Select All</button>
         <button onclick="deselectAllSups()" style="padding:5px 14px;background:#f1f5f9;color:#475569;border:1px solid #dde2f0;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;">✕ Deselect All</button>
@@ -632,44 +641,67 @@ tr:last-child td{border-bottom:none;}
       </div>
     </div>
 
-    <!-- KPI comparison table -->
-    <div style="background:white;border-radius:11px;border:0.5px solid #e2e6f0;overflow:auto;margin-bottom:14px;">
-      <table class="cmp-table">
-        <thead><tr>
-          <th class="sortable" data-col="name" data-tbl="supcmp">Supervisor <span class="sort-icon"></span></th>
-          <th class="sortable" data-col="aero" data-tbl="supcmp">AERO <span class="sort-icon"></span></th>
-          <th class="sortable" data-col="booths" data-tbl="supcmp">Booths <span class="sort-icon"></span></th>
-          <th class="sortable" data-col="electors" data-tbl="supcmp">Electors <span class="sort-icon"></span></th>
-          <th class="sortable" data-col="distributed" data-tbl="supcmp">Distributed <span class="sort-icon"></span></th>
-          <th class="sortable" data-col="distpct" data-tbl="supcmp">Dist % <span class="sort-icon"></span></th>
-          <th class="sortable" data-col="digitized" data-tbl="supcmp">Digitized <span class="sort-icon"></span></th>
-          <th class="sortable" data-col="digipct" data-tbl="supcmp">Digi % <span class="sort-icon"></span></th>
-          <th class="sortable" data-col="verified" data-tbl="supcmp">BLO Verified <span class="sort-icon"></span></th>
-          <th class="sortable" data-col="trained" data-tbl="supcmp">Trained <span class="sort-icon"></span></th>
-          <th class="sortable" data-col="pending" data-tbl="supcmp">Pending <span class="sort-icon"></span></th>
-        </tr></thead>
-        <tbody id="sup-cmp-tbody"></tbody>
-      </table>
-    </div>
+    <!-- Sub-tabs: EF Distribution | EF Digitization -->
+    <div class="master-outer">
+      <div class="mo-tabs">
+        <button class="mo-tab active-dist" id="sup-mo-dist" onclick="switchSupTab('dist')">📦 EF Distribution</button>
+        <button class="mo-tab" id="sup-mo-digi" onclick="switchSupTab('digi')">💻 EF Digitization</button>
+      </div>
 
-    <!-- Distribution % chart — full row -->
-    <div style="background:white;border-radius:11px;border:0.5px solid #e2e6f0;padding:16px 18px;margin-bottom:14px;">
-      <div class="chart-title">Distribution % by Supervisor — Today</div>
-      <div style="position:relative;"><canvas id="supDistChart"></canvas></div>
-    </div>
+      <!-- Distribution panel -->
+      <div class="mo-panel active" id="sup-panel-dist">
+        <!-- KPI table -->
+        <div style="overflow-x:auto;margin-bottom:14px;">
+          <table class="cmp-table">
+            <thead><tr>
+              <th class="sortable" data-col="name" data-tbl="supcmp">Supervisor <span class="sort-icon"></span></th>
+              <th class="sortable" data-col="aero" data-tbl="supcmp">AERO <span class="sort-icon"></span></th>
+              <th class="sortable" data-col="booths" data-tbl="supcmp">Booths <span class="sort-icon"></span></th>
+              <th class="sortable" data-col="electors" data-tbl="supcmp">Electors <span class="sort-icon"></span></th>
+              <th class="sortable" data-col="distributed" data-tbl="supcmp">Distributed <span class="sort-icon"></span></th>
+              <th class="sortable" data-col="distpct" data-tbl="supcmp">Dist % <span class="sort-icon"></span></th>
+              <th class="sortable" data-col="digitized" data-tbl="supcmp">Digitized <span class="sort-icon"></span></th>
+              <th class="sortable" data-col="digipct" data-tbl="supcmp">Digi % <span class="sort-icon"></span></th>
+              <th class="sortable" data-col="verified" data-tbl="supcmp">BLO Verified <span class="sort-icon"></span></th>
+              <th class="sortable" data-col="trained" data-tbl="supcmp">Trained <span class="sort-icon"></span></th>
+              <th class="sortable" data-col="pending" data-tbl="supcmp">Pending <span class="sort-icon"></span></th>
+            </tr></thead>
+            <tbody id="sup-cmp-tbody"></tbody>
+          </table>
+        </div>
 
-    <!-- Day-on-Day progress — full row -->
-    <div style="background:white;border-radius:11px;border:0.5px solid #e2e6f0;padding:16px 18px;margin-bottom:14px;">
-      <div class="chart-title">Day-on-Day Distribution % Progress</div>
-      <div style="position:relative;"><canvas id="supProgressChart"></canvas></div>
-    </div>
+        <!-- Chart with view toggle -->
+        <div style="background:white;border-radius:11px;border:0.5px solid #e2e6f0;padding:16px 18px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:14px;">
+            <div class="chart-title" style="margin-bottom:0;">Distribution % by Supervisor</div>
+            <div style="display:flex;gap:6px;">
+              <button id="sup-chart-dist-btn" class="sup-chart-btn active-chart-btn" onclick="setSupChartMode('dist')">By Distribution</button>
+              <button id="sup-chart-digi-btn" class="sup-chart-btn" onclick="setSupChartMode('digi')">By Digitization</button>
+              <button id="sup-chart-both-btn" class="sup-chart-btn" onclick="setSupChartMode('both')">By Both</button>
+            </div>
+          </div>
+          <div style="position:relative;"><canvas id="supDistChart"></canvas></div>
+        </div>
+      </div>
 
-    <!-- Digitization % chart — full row -->
-    <div style="background:white;border-radius:11px;border:0.5px solid #e2e6f0;padding:16px 18px;margin-bottom:14px;">
-      <div class="chart-title">Digitization % by Supervisor — Today</div>
-      <div style="position:relative;"><canvas id="supDigiChart"></canvas></div>
+      <!-- Digitization panel -->
+      <div class="mo-panel" id="sup-panel-digi">
+        <div style="overflow-x:auto;margin-bottom:14px;">
+          <table class="cmp-table">
+            <thead><tr>
+              <th>Supervisor</th><th>AERO</th><th>Booths</th><th>Electors</th>
+              <th>Distributed</th><th>Dist %</th><th>Digitized</th><th>Digi %</th>
+              <th>BLO Verified</th><th>Trained</th><th>Pending</th>
+            </tr></thead>
+            <tbody id="sup-digi-tbody"></tbody>
+          </table>
+        </div>
+        <div style="background:white;border-radius:11px;border:0.5px solid #e2e6f0;padding:16px 18px;">
+          <div class="chart-title">Digitization % by Supervisor</div>
+          <div style="position:relative;"><canvas id="supDigiChart"></canvas></div>
+        </div>
+      </div>
     </div>
-
   </div>
 
   <div class="hidden" id="filter-section">
@@ -863,6 +895,7 @@ let currentView='snapshot',masterDistAero=null,masterDigiAero=null;
 let selectedCmpAeros=new Set(AERO_NAMES),activeFilterMode=null,distBarChart=null,progressChart=null;
 const SUP_NAMES=Object.keys(SUPERVISORS_DATA).sort();
 let selectedSupNames=new Set(SUP_NAMES);
+let supTabMode='dist', supChartMode='dist';
 let _supSelectedAeros=new Set(AERO_NAMES);
 let supDistChart=null,supProgressChart=null,supDigiChart=null,supEFChart=null;
 const sortState={'dist-range':{col:'pct',dir:'desc'},'digi-range':{col:'pct',dir:'desc'},'cmp':{col:'distpct',dir:'desc'},'supcmp':{col:'distpct',dir:'desc'},'fb':{col:'distpct',dir:'desc'}};
@@ -1903,135 +1936,21 @@ function renderSupTableSorted(){
 }
 
 // ── CHART HELPERS ────────────────────────────────────────────────
-function drawAvgLineAndLabels(chart, data, avgVal){
-  const ctx = chart.ctx;
-  const chartArea = chart.chartArea;
-  if(!chartArea) return; // guard: not ready yet
-  const yScale = chart.scales && chart.scales.y;
-  if(!yScale) return;
 
-  // Draw watermark % labels inside bars (rotated 90°, bottom to top)
-  ctx.save();
-  const meta = chart.getDatasetMeta(0);
-  data.forEach((val,i)=>{
-    if(val <= 0) return;
-    const bar = meta && meta.data[i];
-    if(!bar) return;
-    try{
-      const barTop = yScale.getPixelForValue(val);
-      const barBottom = yScale.getPixelForValue(0);
-      const barHeight = barBottom - barTop;
-      if(barHeight < 16) return;
-      ctx.save();
-      ctx.translate(bar.x, barBottom - 8);
-      ctx.rotate(-Math.PI/2);
-      ctx.font = 'bold 10px Segoe UI';
-      ctx.fillStyle = 'rgba(255,255,255,0.90)';
-      ctx.textAlign = 'left';
-      ctx.fillText(val.toFixed(2)+'%', 4, 0);
-      ctx.restore();
-    }catch(e){}
-  });
-  ctx.restore();
 
-  // Draw yellow dotted average line
-  try{
-    ctx.save();
-    ctx.beginPath();
-    ctx.setLineDash([6,4]);
-    ctx.strokeStyle = '#EAB308';
-    ctx.lineWidth = 2.5;
-    const avgY = yScale.getPixelForValue(avgVal);
-    ctx.moveTo(chartArea.left, avgY);
-    ctx.lineTo(chartArea.right, avgY);
-    ctx.stroke();
-    ctx.setLineDash([]);
-    ctx.restore();
-  }catch(e){}
-}
 
-function supBarChartOptions(data, labels, colors, maxVal){
-  const avg = data.length>0 ? data.reduce((a,b)=>a+b,0)/data.length : 0;
-  // Scale: max + 15% headroom, min 20
-  const yMax = Math.max(20, Math.ceil((maxVal * 1.25)/10)*10);
-  return {
-    responsive: true,
-    plugins:{
-      legend:{display:false},
-      tooltip:{callbacks:{label:ctx=>ctx.parsed.y.toFixed(2)+'%'}}
-    },
-    scales:{
-      y:{min:0, max:yMax,
-        ticks:{stepSize: yMax<=40?5:yMax<=60?10:20, callback:v=>v+'%'},
-        grid:{color:'#f1f5f9'}},
-      x:{ticks:{font:{size:9}, maxRotation:35}}
-    },
-    animation:{
-      onComplete:function(){
-        drawAvgLineAndLabels(this, data, avg);
-      }
-    }
-  };
-}
 
 // ── MAIN RENDER ──────────────────────────────────────────────────
 function renderSupCompare(){
   if(!todayData) return;
   const sel = [...selectedSupNames].sort();
-
-  // Table
   renderSupTableSorted();
-
-  // ── Distribution % bar chart ──
-  const distData = sel.map(s=>+computeKPIs(getSupData(s)).distPct.toFixed(2));
-  const colors = sel.map(supColor);
-  const distMax = Math.max(...distData, 1);
-  if(supDistChart) supDistChart.destroy();
-  supDistChart = new Chart(document.getElementById('supDistChart'),{
-    type:'bar',
-    data:{labels:sel, datasets:[{data:distData, backgroundColor:colors.map(c=>c+'BB'), borderColor:colors, borderWidth:1.5, borderRadius:4}]},
-    options: supBarChartOptions(distData, sel, colors, distMax)
-  });
-
-  // ── Digitization % bar chart ──
-  const digiData = sel.map(s=>+computeKPIs(getSupData(s)).digitPctOfElectors.toFixed(2));
-  const digiMax = Math.max(...digiData, 1);
-  if(supDigiChart) supDigiChart.destroy();
-  supDigiChart = new Chart(document.getElementById('supDigiChart'),{
-    type:'bar',
-    data:{labels:sel, datasets:[{data:digiData, backgroundColor:colors.map(c=>c+'88'), borderColor:colors, borderWidth:1.5, borderRadius:4}]},
-    options: supBarChartOptions(digiData, sel, colors, digiMax)
-  });
-
-  // ── Day-on-day progress line chart ──
-  if(supProgressChart) supProgressChart.destroy();
-  if(!prevMap) return;
-  const days = ['Yesterday','Today'];
-  const datasets = sel.map(s=>{
-    const info = SUPERVISORS_DATA[s]||{};
-    const booths = info.booths||[];
-    const ydayE = booths.reduce((sum,pn)=>{const r=todayData.find(x=>x.pn===pn);return sum+(r?r.e:0);},0);
-    const ydayD = booths.reduce((sum,pn)=>{const r=todayData.find(x=>x.pn===pn);return sum+(r?Math.round((prevMap[pn]??0)/100*r.e):0);},0);
-    const ydayPct = ydayE>0?+(ydayD/ydayE*100).toFixed(2):0;
-    const todayPct = +computeKPIs(getSupData(s)).distPct.toFixed(2);
-    const c = supColor(s);
-    return{label:s, data:[ydayPct,todayPct], borderColor:c, backgroundColor:c+'22', tension:0.3, pointRadius:6, pointHoverRadius:8, fill:false};
-  });
-  supProgressChart = new Chart(document.getElementById('supProgressChart'),{
-    type:'line',
-    data:{labels:days, datasets},
-    options:{
-      responsive:true,
-      plugins:{
-        legend:{position:'bottom',labels:{font:{size:9},boxWidth:10,padding:6}},
-        tooltip:{callbacks:{label:ctx=>ctx.dataset.label+': '+ctx.parsed.y.toFixed(2)+'%'}}
-      },
-      scales:{
-        y:{min:0, max:100, ticks:{stepSize:20,callback:v=>v+'%'}, grid:{color:'#f1f5f9'}},
-        x:{ticks:{font:{size:11}}}
-      }
-    }
-  });
+  if(supTabMode === 'digi'){
+    renderSupDigiTable();
+    buildSupDigiChart();
+  } else {
+    buildSupDistChart();
+  }
 }
 
 
@@ -2565,6 +2484,284 @@ function devLoadPrev(ev){
     document.getElementById('dev-status-text').style.color = '#3A86FF';
   });
 }
+
+// ── COMPARE SUPERVISORS — SUB-TAB + CHART MODE ───────────────────
+
+let supTabMode = 'dist';       // 'dist' | 'digi'
+let supChartMode = 'dist';     // 'dist' | 'digi' | 'both'
+
+function switchSupTab(tab){
+  supTabMode = tab;
+  // Update mo-tab styles
+  document.getElementById('sup-mo-dist').className = 'mo-tab ' + (tab==='dist'?'active-dist':'');
+  document.getElementById('sup-mo-digi').className = 'mo-tab ' + (tab==='digi'?'active-digi':'');
+  const pd = document.getElementById('sup-panel-dist');
+  const pg = document.getElementById('sup-panel-digi');
+  if(pd){ pd.className = 'mo-panel' + (tab==='dist'?' active':''); }
+  if(pg){ pg.className = 'mo-panel' + (tab==='digi'?' active':''); }
+  renderSupCompare();
+}
+
+function setSupChartMode(mode){
+  supChartMode = mode;
+  ['dist','digi','both'].forEach(m=>{
+    const btn = document.getElementById('sup-chart-'+m+'-btn');
+    if(btn) btn.className = 'sup-chart-btn' + (m===mode?' active-chart-btn':'');
+  });
+  buildSupDistChart();
+}
+
+function buildSupDistChart(){
+  const sel = [...selectedSupNames].sort();
+  const colors = sel.map(supColor);
+  const distData = sel.map(s=>+computeKPIs(getSupData(s)).distPct.toFixed(2));
+  const digiData = sel.map(s=>+computeKPIs(getSupData(s)).digitPctOfElectors.toFixed(2));
+  const distMax = Math.max(...distData, 1);
+  const digiMax = Math.max(...digiData, 1);
+  const mode = supChartMode;
+
+  // Scale: give 20% headroom above the max value, round up to nearest 5
+  const yMaxDist = Math.ceil((distMax * 1.2) / 5) * 5 || 20;
+  const yMaxDigi = Math.ceil((digiMax * 1.2) / 5) * 5 || 20;
+
+  if(supDistChart) supDistChart.destroy();
+
+  const canvas = document.getElementById('supDistChart');
+  if(!canvas) return;
+
+  // ── BOTH mode: grouped with dist bar + digi inner ──────────────
+  if(mode === 'both'){
+    supDistChart = new Chart(canvas, {
+      type:'bar',
+      data:{
+        labels: sel,
+        datasets:[
+          {
+            label:'Distribution %',
+            data: distData,
+            backgroundColor: colors.map(c=>c+'BB'),
+            borderColor: colors,
+            borderWidth: 1.5,
+            borderRadius: 4,
+            yAxisID: 'yDist',
+            order: 2
+          },
+          {
+            label:'Digitization %',
+            data: digiData,
+            backgroundColor: colors.map(c=>lightenHex(c, 0.45)),
+            borderColor: colors.map(c=>c+'88'),
+            borderWidth: 1,
+            borderRadius: 4,
+            yAxisID: 'yDigi',
+            order: 1
+          }
+        ]
+      },
+      options:{
+        responsive:true,
+        plugins:{
+          legend:{position:'bottom',labels:{font:{size:10},boxWidth:12,padding:8}},
+          tooltip:{callbacks:{label:ctx=>ctx.dataset.label+': '+ctx.parsed.y.toFixed(2)+'%'}}
+        },
+        scales:{
+          yDist:{
+            type:'linear', position:'left',
+            min:0, max:yMaxDist,
+            title:{display:true,text:'Distribution %',font:{size:10},color:'#64748b'},
+            ticks:{callback:v=>v+'%', font:{size:9}},
+            grid:{color:'#f1f5f9'}
+          },
+          yDigi:{
+            type:'linear', position:'right',
+            min:0, max:yMaxDigi,
+            title:{display:true,text:'Digitization %',font:{size:10},color:'#94a3b8'},
+            ticks:{callback:v=>v+'%', font:{size:9}, color:'#94a3b8'},
+            grid:{drawOnChartArea:false},
+            border:{dash:[4,4], color:'#94a3b8'}
+          },
+          x:{ticks:{font:{size:9},maxRotation:35}}
+        },
+        animation:{
+          onComplete:function(){
+            drawSupBarsLabels(this, distData, digiData, colors, mode);
+          }
+        }
+      }
+    });
+
+  // ── SINGLE mode: dist or digi ─────────────────────────────────
+  } else {
+    const data = mode==='digi' ? digiData : distData;
+    const yMax = mode==='digi' ? yMaxDigi : yMaxDist;
+    const axisLabel = mode==='digi' ? 'Digitization %' : 'Distribution %';
+    const avg = data.length ? +(data.reduce((a,b)=>a+b,0)/data.length).toFixed(2) : 0;
+
+    supDistChart = new Chart(canvas, {
+      type:'bar',
+      data:{
+        labels:sel,
+        datasets:[{
+          data:data,
+          backgroundColor: colors.map(c=>c+'BB'),
+          borderColor: colors,
+          borderWidth:1.5,
+          borderRadius:4
+        }]
+      },
+      options:{
+        responsive:true,
+        plugins:{
+          legend:{display:false},
+          tooltip:{callbacks:{label:ctx=>ctx.parsed.y.toFixed(2)+'%'}}
+        },
+        scales:{
+          y:{
+            min:0, max:yMax,
+            title:{display:true,text:axisLabel,font:{size:10},color:'#64748b'},
+            ticks:{callback:v=>v+'%', font:{size:9}},
+            grid:{color:'#f1f5f9'}
+          },
+          x:{ticks:{font:{size:9},maxRotation:35}}
+        },
+        animation:{
+          onComplete:function(){
+            drawSupBarsLabels(this, data, null, colors, mode);
+            // Draw yellow avg line
+            const ctx=this.ctx, ca=this.chartArea, ys=this.scales.y;
+            if(!ca||!ys) return;
+            const avgY=ys.getPixelForValue(avg);
+            ctx.save();
+            ctx.beginPath();
+            ctx.setLineDash([6,4]);
+            ctx.strokeStyle='#EAB308';
+            ctx.lineWidth=2.5;
+            ctx.moveTo(ca.left, avgY);
+            ctx.lineTo(ca.right, avgY);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            ctx.restore();
+          }
+        }
+      }
+    });
+  }
+}
+
+function drawSupBarsLabels(chart, distData, digiData, colors, mode){
+  const ctx = chart.ctx;
+  const ca = chart.chartArea;
+  if(!ca) return;
+  ctx.save();
+  ctx.font = 'bold 9px Segoe UI';
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#1a1a2e';
+
+  if(mode==='both'){
+    // Label both datasets
+    [0,1].forEach(di=>{
+      const data = di===0 ? distData : digiData;
+      const meta = chart.getDatasetMeta(di);
+      meta.data.forEach((bar,i)=>{
+        if(data[i]>0) ctx.fillText(data[i].toFixed(1)+'%', bar.x, bar.y-3);
+      });
+    });
+  } else {
+    const meta = chart.getDatasetMeta(0);
+    meta.data.forEach((bar,i)=>{
+      if(distData[i]>0) ctx.fillText(distData[i].toFixed(1)+'%', bar.x, bar.y-3);
+    });
+  }
+  ctx.restore();
+}
+
+function lightenHex(hex, amt){
+  // Lighten a hex color by blending with white
+  const r=parseInt(hex.slice(1,3),16), g=parseInt(hex.slice(3,5),16), b=parseInt(hex.slice(5,7),16);
+  const nr=Math.round(r+(255-r)*amt), ng=Math.round(g+(255-g)*amt), nb=Math.round(b+(255-b)*amt);
+  return '#'+[nr,ng,nb].map(v=>v.toString(16).padStart(2,'0')).join('');
+}
+
+function buildSupDigiChart(){
+  const sel = [...selectedSupNames].sort();
+  const colors = sel.map(supColor);
+  const digiData = sel.map(s=>+computeKPIs(getSupData(s)).digitPctOfElectors.toFixed(2));
+  const digiMax = Math.max(...digiData, 1);
+  const yMax = Math.ceil((digiMax * 1.2)/5)*5 || 20;
+  const avg = digiData.length ? +(digiData.reduce((a,b)=>a+b,0)/digiData.length).toFixed(2) : 0;
+
+  if(supDigiChart) supDigiChart.destroy();
+  const canvas = document.getElementById('supDigiChart');
+  if(!canvas) return;
+
+  supDigiChart = new Chart(canvas, {
+    type:'bar',
+    data:{labels:sel, datasets:[{
+      data:digiData, backgroundColor:colors.map(c=>c+'88'),
+      borderColor:colors, borderWidth:1.5, borderRadius:4
+    }]},
+    options:{
+      responsive:true,
+      plugins:{legend:{display:false},
+        tooltip:{callbacks:{label:ctx=>ctx.parsed.y.toFixed(2)+'%'}}},
+      scales:{
+        y:{min:0, max:yMax,
+          title:{display:true,text:'Digitization %',font:{size:10},color:'#64748b'},
+          ticks:{callback:v=>v+'%',font:{size:9}},grid:{color:'#f1f5f9'}},
+        x:{ticks:{font:{size:9},maxRotation:35}}
+      },
+      animation:{onComplete:function(){
+        const ctx=this.ctx,ca=this.chartArea,ys=this.scales.y;
+        if(!ca||!ys) return;
+        // Bar labels
+        ctx.save();ctx.font='bold 9px Segoe UI';ctx.textAlign='center';ctx.fillStyle='#1a1a2e';
+        const meta=this.getDatasetMeta(0);
+        meta.data.forEach((bar,i)=>{if(digiData[i]>0) ctx.fillText(digiData[i].toFixed(1)+'%',bar.x,bar.y-3);});
+        ctx.restore();
+        // Avg line
+        const avgY=ys.getPixelForValue(avg);
+        ctx.save();ctx.beginPath();ctx.setLineDash([6,4]);
+        ctx.strokeStyle='#EAB308';ctx.lineWidth=2.5;
+        ctx.moveTo(ca.left,avgY);ctx.lineTo(ca.right,avgY);
+        ctx.stroke();ctx.setLineDash([]);ctx.restore();
+      }}
+    }
+  });
+}
+
+// ── Populate digi tab table ───────────────────────────────────────
+function renderSupDigiTable(){
+  const sel = [...selectedSupNames].sort();
+  const tbody = document.getElementById('sup-digi-tbody');
+  if(!tbody) return;
+  const green='#10B981',red='#EF4444';
+  tbody.innerHTML = sel.map(s=>{
+    const kpi = computeKPIs(getSupData(s));
+    const info = SUPERVISORS_DATA[s]||{};
+    const c = supColor(s);
+    const ac = aeroColor(info.aero||'');
+    const dc = kpi.distPct>50?green:kpi.distPct>25?'#D97706':red;
+    const gc = kpi.digitPctOfElectors>20?green:kpi.digitPctOfElectors>5?'#D97706':red;
+    return `<tr style="cursor:pointer;" onclick="openAeroOverlayForSup('${s.replace(/'/g,"\\'")}')">
+      <td><div style="display:flex;align-items:center;gap:7px;">
+        <span style="width:10px;height:10px;border-radius:50%;background:${c};display:inline-block;flex-shrink:0;"></span>
+        <div><div style="font-weight:700;font-size:12px;color:${c};">${s}</div>
+        <div style="font-size:10px;color:#94a3b8;">${info.desig||''}</div></div>
+      </div></td>
+      <td><span style="font-size:11px;font-weight:600;color:${ac};background:${ac}15;padding:2px 8px;border-radius:12px;">${info.aero||'—'}</span></td>
+      <td>${(info.booths||[]).length}</td>
+      <td>${kpi.e.toLocaleString('en-IN')}</td>
+      <td>${kpi.d.toLocaleString('en-IN')}</td>
+      <td><b style="color:${dc}">${kpi.distPct.toFixed(2)}%</b></td>
+      <td>${kpi.dg.toLocaleString('en-IN')}</td>
+      <td><b style="color:${gc}">${kpi.digitPctOfElectors.toFixed(2)}%</b></td>
+      <td>${kpi.v.toLocaleString('en-IN')}</td>
+      <td>${kpi.tr}/${kpi.tb}</td>
+      <td>${kpi.pend.toLocaleString('en-IN')}</td>
+    </tr>`;
+  }).join('');
+}
+
 </script>
 
 
