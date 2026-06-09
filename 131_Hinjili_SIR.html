@@ -352,7 +352,7 @@ tr:last-child td{border-bottom:none;}
 <div class="topbar">
   <div><h1>131 Hinjili SIR — EF Tracking Dashboard</h1><div class="meta">Odisha · Ganjam District · AC 131 · 232 Booths</div></div>
   <div class="date-row">
-    <span class="dbadge" id="today-dbadge">Data: 8 Jun · 6 PM</span>
+    <span class="dbadge" id="today-dbadge">Loading…</span>
   </div>
   <div style="display:flex;gap:8px;align-items:center;">
 
@@ -1144,6 +1144,29 @@ const SEED3={"1": 38.19, "2": 57.48, "3": 22.44, "4": 30.28, "5": 20.45, "6": 16
 function initDashboard(){
   if(initDashboard._done) return;
   initDashboard._done = true;
+
+  // ── Step 1: Set up UI immediately (show layout, no spinner) ──────
+  buildFilterBar('master-dist-filter',a=>{masterDistAero=a;if(todayData)renderMasterDist(masterDistAero?filt(todayData,new Set([masterDistAero])):todayData);});
+  buildFilterBar('master-digi-filter',a=>{masterDigiAero=a;if(todayData)renderMasterDigi(masterDigiAero?filt(todayData,new Set([masterDigiAero])):todayData);});
+  buildCmpBar();
+  setView('snapshot');
+
+  // Update badge to show we are fetching
+  const badge = document.getElementById('today-dbadge');
+  if(badge) badge.textContent = 'Fetching latest data…';
+
+  // ── Step 2: Fetch latest data from GitHub ─────────────────────────
+  // fetchFileList will call refreshView() once data is loaded.
+  // If it fails (no network, file not found), fall back to SEED5.
+  fetchFileList().catch(()=>{}).finally(()=>{
+    if(!todayData || todayData.length === 0){
+      // Fallback to embedded seed data
+      loadSeedData();
+    }
+  });
+}
+
+function loadSeedData(){
   todayData=SEED5.map(r=>({...r}));
   prevMap={};prevDigiMap={};
   Object.entries(SEED3).forEach(([k,v])=>{prevMap[Number(k)]=v;prevDigiMap[Number(k)]=0;});
@@ -1151,12 +1174,9 @@ function initDashboard(){
   const pf=todayData.map(r=>({...r,pct:SEED3[r.pn]??0,d:Math.round((SEED3[r.pn]??0)/100*r.e)}));
   snapshotDay(pf,'3 Jun');
   dayHistory.sort((a,b)=>a.label.localeCompare(b.label));
-  buildFilterBar('master-dist-filter',a=>{masterDistAero=a;if(todayData)renderMasterDist(masterDistAero?filt(todayData,new Set([masterDistAero])):todayData);});
-  buildFilterBar('master-digi-filter',a=>{masterDigiAero=a;if(todayData)renderMasterDigi(masterDigiAero?filt(todayData,new Set([masterDigiAero])):todayData);});
-  buildCmpBar();
-  setView('snapshot');
+  const badge = document.getElementById('today-dbadge');
+  if(badge) badge.textContent = 'Data: 8 Jun · 6 PM (offline)';
   refreshView();
-  setTimeout(fetchFileList, 1000);
 }
 // Fire on DOMContentLoaded, load, and as direct call (belt-and-suspenders)
 document.addEventListener('DOMContentLoaded', initDashboard);
@@ -2380,13 +2400,14 @@ async function fetchFileList(){
         }
         todayData = parsed;
         currentFileDate = label;
+        prevMap={};prevDigiMap={};
         snapshotDay(todayData, label);
+        dayHistory.sort((a,b)=>a.label.localeCompare(b.label));
         const badge = document.getElementById('today-dbadge');
         if(badge) badge.textContent = 'Data: ' + label;
         const devSt = document.getElementById('dev-status-text');
-        if(devSt){ devSt.textContent = 'Auto-loaded: ' + c.name; devSt.style.color = '#06D6A0'; }
+        if(devSt){ devSt.textContent = 'Live: ' + c.name; devSt.style.color = '#06D6A0'; }
         refreshView();
-        // Background scan remaining files for history
         setTimeout(()=>scanHistory(candidates, c.name), 500);
         return;
       }
