@@ -57,6 +57,7 @@ body{
 /* Smooth scrolling on iOS */
 .main{-webkit-overflow-scrolling:touch;}
 /* Make tap targets bigger on mobile */
+@media(max-width:480px){.kpi-grid{grid-template-columns:repeat(2,1fr);gap:7px;}.kpi-pct{font-size:20px;}.topbar h1{font-size:12px;}.vt-btn{padding:7px 8px;font-size:10px;}.ptab,.itab{font-size:10px;padding:7px 8px;}}
 @media(max-width:768px){
   .vt-btn{padding:10px 12px;font-size:11px;}
   .achip{padding:7px 12px;}
@@ -70,12 +71,12 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f2f8;color:#1a1a2e;mi
 .topbar h1{font-size:15px;font-weight:600;}.topbar .meta{font-size:10.5px;opacity:0.5;margin-top:1px;}
 .date-row{display:flex;gap:7px;align-items:center;}
 .dbadge{background:rgba(255,255,255,0.13);border-radius:20px;padding:3px 11px;font-size:11px;}
-.dbadge.yday{background:rgba(255,255,255,0.06);font-size:10px;opacity:0.7;}
+
 .main{padding:14px 18px;max-width:1440px;margin:0 auto;}
-.upload-bar{background:white;border:1.5px dashed #c0c8dc;border-radius:9px;padding:9px 16px;margin-bottom:14px;}
-.upload-inner{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;}
-.upload-btn{font-size:11.5px;color:#5a6070;display:flex;align-items:center;gap:5px;cursor:pointer;padding:5px 11px;border:1px solid #d4dae8;border-radius:6px;background:white;transition:background .12s;}
-.upload-btn:hover{background:#f0f3fb;}.upload-btn input{display:none;}
+
+
+
+
 /* View toggle */
 .view-toggle{display:flex;gap:0;margin-bottom:14px;background:white;border-radius:8px;border:0.5px solid #e2e6f0;overflow:hidden;width:fit-content;}
 .vt-btn{padding:8px 18px;font-size:12.5px;font-weight:600;cursor:pointer;border:none;background:transparent;color:#7a8399;transition:all .15s;white-space:nowrap;}
@@ -89,7 +90,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f2f8;color:#1a1a2e;mi
 
 /* ── SNAPSHOT KPI CARDS ── */
 .kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:16px;}
-.kpi-card{background:white;border-radius:12px;padding:18px 20px;border:0.5px solid #e2e6f0;position:relative;overflow:hidden;}
+.kpi-card{background:white;border-radius:10px;padding:12px 14px;border:0.5px solid #e2e6f0;position:relative;overflow:hidden;}
 .kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
 .kpi-card.blue::before{background:linear-gradient(90deg,#185FA5,#3b82f6);}
 .kpi-card.green::before{background:linear-gradient(90deg,#0f6e56,#10b981);}
@@ -97,7 +98,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f2f8;color:#1a1a2e;mi
 .kpi-card.teal::before{background:linear-gradient(90deg,#127A61,#14b8a6);}
 .kpi-card.pink::before{background:linear-gradient(90deg,#993556,#ec4899);}
 .kpi-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#94a3b8;margin-bottom:10px;}
-.kpi-pct{font-size:38px;font-weight:800;line-height:1;margin-bottom:4px;letter-spacing:-1px;}
+.kpi-pct{font-size:28px;font-weight:800;line-height:1;margin-bottom:3px;letter-spacing:-0.5px;}
 .kpi-card.blue .kpi-pct{color:#185FA5;}
 .kpi-card.green .kpi-pct{color:#0f6e56;}
 .kpi-card.amber .kpi-pct{color:#9a6010;}
@@ -105,9 +106,9 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f2f8;color:#1a1a2e;mi
 .kpi-card.pink .kpi-pct{color:#993556;}
 .kpi-abs{font-size:12px;color:#64748b;font-weight:500;}
 .kpi-sub{font-size:10.5px;color:#a0aabc;margin-top:3px;}
-.kpi-electors{background:white;border-radius:12px;padding:18px 20px;border:0.5px solid #e2e6f0;grid-column:span 1;}
+.kpi-electors{background:white;border-radius:10px;padding:12px 14px;border:0.5px solid #e2e6f0;grid-column:span 1;}
 .kpi-electors .kpi-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#94a3b8;margin-bottom:10px;}
-.kpi-electors .kpi-pct{font-size:38px;font-weight:800;line-height:1;margin-bottom:4px;color:#1a1a2e;letter-spacing:-1px;}
+.kpi-electors .kpi-pct{font-size:28px;font-weight:800;line-height:1;margin-bottom:3px;color:#1a1a2e;letter-spacing:-0.5px;}
 .kpi-electors .kpi-abs{font-size:12px;color:#64748b;font-weight:500;}
 
 /* ── PERF CARD ── */
@@ -208,6 +209,57 @@ tr:last-child td{border-bottom:none;}
 .mkpi .sub{font-size:10px;color:#a0aabc;margin-top:2px;}
 .mkpi.blue .val{color:#185FA5;}.mkpi.green .val{color:#0f6e56;}.mkpi.amber .val{color:#9a6010;}.mkpi.teal .val{color:#127A61;}.mkpi.pink .val{color:#993556;}
 .hidden{display:none!important;}
+/* ── DEV LOGIN ── */
+#dev-btn{
+  position:fixed;bottom:18px;right:18px;z-index:900;
+  width:28px;height:28px;border-radius:50%;
+  background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all .2s;
+}
+#dev-btn:hover{background:rgba(255,255,255,0.18);border-color:rgba(255,255,255,0.3);}
+#dev-btn svg{opacity:0.3;transition:opacity .2s;}
+#dev-btn:hover svg{opacity:0.7;}
+/* Dev panel */
+#dev-panel{
+  position:fixed;bottom:56px;right:18px;z-index:901;
+  background:#1a1a2e;border:1px solid rgba(255,255,255,0.15);
+  border-radius:12px;padding:0;width:300px;
+  box-shadow:0 8px 32px rgba(0,0,0,0.4);
+  display:none;overflow:hidden;
+}
+#dev-panel.open{display:block;}
+.dev-header{
+  padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.1);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.dev-header span{font-size:12px;font-weight:700;color:rgba(255,255,255,0.7);letter-spacing:.05em;}
+.dev-header button{background:none;border:none;color:rgba(255,255,255,0.4);cursor:pointer;font-size:14px;padding:2px 6px;border-radius:4px;}
+.dev-header button:hover{color:white;background:rgba(255,255,255,0.1);}
+.dev-body{padding:14px 16px;}
+.dev-row{margin-bottom:12px;}
+.dev-row:last-child{margin-bottom:0;}
+.dev-label{font-size:10.5px;font-weight:600;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;}
+.dev-upload-btn{
+  display:flex;align-items:center;gap:8px;width:100%;
+  padding:9px 12px;border-radius:8px;cursor:pointer;
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);
+  color:rgba(255,255,255,0.8);font-size:12px;font-weight:500;
+  transition:background .15s;
+}
+.dev-upload-btn:hover{background:rgba(255,255,255,0.12);}
+.dev-upload-btn input{display:none;}
+.dev-upload-btn .dev-icon{
+  width:28px;height:28px;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;
+}
+.dev-status{
+  font-size:10px;color:rgba(255,255,255,0.35);
+  padding:8px 0 0;border-top:1px solid rgba(255,255,255,0.07);
+  margin-top:10px;
+}
+.dev-status b{color:rgba(255,255,255,0.6);}
+
 @media(max-width:1100px){.kpi-grid{grid-template-columns:repeat(3,1fr);}.chart-grid{grid-template-columns:1fr;}}
 @media(max-width:700px){.kpi-grid{grid-template-columns:repeat(2,1fr);}}
 
@@ -283,34 +335,10 @@ tr:last-child td{border-bottom:none;}
 <div class="topbar">
   <div><h1>131 Hinjili SIR — EF Tracking Dashboard</h1><div class="meta">Odisha · Ganjam District · AC 131 · 232 Booths</div></div>
   <div class="date-row">
-    <span class="dbadge yday" id="prev-dbadge">Yesterday: 3 Jun</span>
     <span class="dbadge" id="today-dbadge">Today: 5 Jun</span>
   </div>
   <div style="display:flex;gap:8px;align-items:center;">
-    <!-- Upload dropdown -->
-    <div class="upload-dropdown" id="upload-dropdown">
-      <button class="print-btn" onclick="toggleUpload(event)">
-        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-        Upload <span class="upload-dropdown-arrow">▾</span>
-      </button>
-      <div class="upload-dropdown-menu" id="upload-menu">
-        <div class="upload-dropdown-item">
-          <label class="upload-dropdown-label">
-            <span class="upl-icon" style="background:#eff6ff;">📅</span>
-            <span><div>Today's file</div><div class="upl-sub">Current day's EF data</div></span>
-            <input type="file" id="todayFile" accept=".xlsx,.xls" onchange="loadToday(event)"/>
-          </label>
-        </div>
-        <div class="upload-dropdown-divider"></div>
-        <div class="upload-dropdown-item">
-          <label class="upload-dropdown-label">
-            <span class="upl-icon" style="background:#f0fdf4;">📆</span>
-            <span><div>Yesterday's file</div><div class="upl-sub">For improvement tracking</div></span>
-            <input type="file" id="prevFile" accept=".xlsx,.xls" onchange="loadPrev(event)"/>
-          </label>
-        </div>
-      </div>
-    </div>
+
     <!-- Save as JPEG -->
     <!-- Download Report dropdown -->
     <div class="upload-dropdown" id="report-dropdown">
@@ -440,25 +468,22 @@ tr:last-child td{border-bottom:none;}
         <div class="kpi-abs" id="k-blo-abs">— of total BLOs</div>
         <div class="kpi-sub" id="k-blo-num">—</div>
       </div>
-    </div>
-
-    <!-- Pending as separate wide card -->
-    <div style="background:white;border-radius:12px;padding:14px 20px;border:0.5px solid #e2e6f0;margin-bottom:14px;display:flex;align-items:center;gap:20px;border-left:4px solid #ec4899;">
-      <div>
-        <div style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#94a3b8;margin-bottom:4px;">Pending Verification</div>
-        <div style="display:flex;align-items:baseline;gap:10px;">
-          <span style="font-size:32px;font-weight:800;color:#993556;" id="k-pending-pct">—%</span>
-          <span style="font-size:13px;color:#64748b;" id="k-pending-abs">— EFs submitted but not yet verified by BLO</span>
-        </div>
+      <div class="kpi-card pink">
+        <div class="kpi-label">Pending Verification</div>
+        <div class="kpi-pct" id="k-pending-pct">—%</div>
+        <div class="kpi-abs" id="k-pending-abs">— of total electors</div>
+        <div class="kpi-sub" id="k-pending-num">—</div>
       </div>
     </div>
+
+
 
     <!-- Performance tabs -->
     <div class="perf-card">
       <div class="inner-tabs">
-        <button class="itab active-best" id="sp-tab-best" onclick="switchSimpleTab('best')">🏆 Top 10 Best Performers <span class="itab-count">10</span></button>
+        <button class="itab active-best" id="sp-tab-best" onclick="switchSimpleTab('best')">🏆 Top 10 Performers <span class="itab-count">10</span></button>
         <button class="itab" id="sp-tab-worst" onclick="switchSimpleTab('worst')">⚠️ Worst 10 Performers <span class="itab-count">10</span></button>
-        <button class="itab" id="sp-tab-imp" onclick="switchSimpleTab('imp')">📈 Top 10 Most Improved <span class="itab-count">10</span></button>
+        <button class="itab" id="sp-tab-imp" onclick="switchSimpleTab('imp')">📈 Top 10 Improved <span class="itab-count">10</span></button>
       </div>
       <div class="ipanel active" id="sp-panel-best">
         <table><thead><tr><th>Rank</th><th>Booth</th><th>AERO</th><th>Electors</th><th>Distributed</th><th>Distribution %</th></tr></thead>
@@ -495,7 +520,7 @@ tr:last-child td{border-bottom:none;}
           <div class="mkpi pink"><div class="lbl">Pending Verification</div><div class="val" id="md-pending">—</div></div>
         </div>
         <div class="inner-tabs" style="margin-bottom:0;">
-          <button class="itab active-best" id="dist-tab-best" onclick="switchInner('dist','best')">🏆 Top 10 Best <span class="itab-count">10</span></button>
+          <button class="itab active-best" id="dist-tab-best" onclick="switchInner('dist','best')">🏆 Top 10 <span class="itab-count">10</span></button>
           <button class="itab" id="dist-tab-worst" onclick="switchInner('dist','worst')">⚠️ Worst 10 <span class="itab-count">10</span></button>
           <button class="itab" id="dist-tab-imp" onclick="switchInner('dist','imp')">📈 Top 10 Improved <span class="itab-count">10</span></button>
           <button class="itab" id="dist-tab-range" onclick="switchInner('dist','range')">📊 Distribution Range <span class="itab-count" id="dist-range-count">232</span></button>
@@ -530,7 +555,7 @@ tr:last-child td{border-bottom:none;}
           <div class="mkpi pink"><div class="lbl">Pending Verification</div><div class="val" id="mg-pending">—</div></div>
         </div>
         <div class="inner-tabs" style="margin-bottom:0;">
-          <button class="itab active-best" id="digi-tab-best" onclick="switchInner('digi','best')">🏆 Top 10 Best <span class="itab-count">10</span></button>
+          <button class="itab active-best" id="digi-tab-best" onclick="switchInner('digi','best')">🏆 Top 10 <span class="itab-count">10</span></button>
           <button class="itab" id="digi-tab-worst" onclick="switchInner('digi','worst')">⚠️ Worst 10 <span class="itab-count">10</span></button>
           <button class="itab" id="digi-tab-imp" onclick="switchInner('digi','imp')">📈 Top 10 Improved <span class="itab-count">10</span></button>
           <button class="itab" id="digi-tab-range" onclick="switchInner('digi','range')">📊 Digitization Range <span class="itab-count" id="digi-range-count">232</span></button>
@@ -778,9 +803,16 @@ tr:last-child td{border-bottom:none;}
       <div style="overflow-x:auto;">
         <table>
           <thead><tr>
-            <th>Booth</th><th>BLO Name</th><th>Supervisor</th><th>AERO</th>
-            <th>Electors</th><th>Distributed</th><th>Dist %</th>
-            <th>Digitized</th><th>Digi %</th><th>BLO Verified</th>
+            <th class="sortable" data-col="pn" data-tbl="fb">Booth <span class="sort-icon"></span></th>
+            <th class="sortable" data-col="blo" data-tbl="fb">BLO Name <span class="sort-icon"></span></th>
+            <th class="sortable" data-col="sup" data-tbl="fb">Supervisor <span class="sort-icon"></span></th>
+            <th class="sortable" data-col="aero" data-tbl="fb">AERO <span class="sort-icon"></span></th>
+            <th class="sortable" data-col="e" data-tbl="fb">Electors <span class="sort-icon"></span></th>
+            <th class="sortable" data-col="d" data-tbl="fb">Distributed <span class="sort-icon"></span></th>
+            <th class="sortable" data-col="distpct" data-tbl="fb">Dist % <span class="sort-icon"></span></th>
+            <th class="sortable" data-col="dg" data-tbl="fb">Digitized <span class="sort-icon"></span></th>
+            <th class="sortable" data-col="digipct" data-tbl="fb">Digi % <span class="sort-icon"></span></th>
+            <th class="sortable" data-col="v" data-tbl="fb">BLO Verified <span class="sort-icon"></span></th>
           </tr></thead>
           <tbody id="fb-tbody"></tbody>
         </table>
@@ -789,20 +821,16 @@ tr:last-child td{border-bottom:none;}
   </div>
 
   <!-- ══════ AERO DRILL-DOWN OVERLAY ══════ -->
-  <div id="aero-overlay" style="position:fixed;inset:0;background:#f0f2f8;z-index:800;display:none;overflow-y:auto;transform:translateX(100%);transition:transform .3s ease;">
-    <div style="background:#1a1a2e;color:white;padding:12px 22px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:10;">
-      <button onclick="closeAeroOverlay()" style="background:rgba(255,255,255,0.15);border:none;color:white;padding:6px 14px;border-radius:20px;cursor:pointer;font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px;">← Back</button>
-      <div>
-        <div style="font-size:15px;font-weight:600;" id="overlay-aero-title">AERO Details</div>
-        <div style="font-size:10.5px;opacity:0.5;" id="overlay-aero-sub">BLO Supervisor breakdown</div>
-      </div>
-    </div>
-    <div style="padding:16px 20px;max-width:1400px;margin:0 auto;" id="overlay-content"></div>
-  </div>
+  <div id="aero-overlay" style="position:fixed;inse// ── GITHUB CONFIG (update these with your details) ───────────────
+// Set your GitHub username and repository name below
+const GITHUB_CONFIG = {
+  owner: 'partha22345',
+  repo:  'SIR-Hinjili',
+  branch: 'main',
+  dataFolder: 'data'
+};
+// ─────────────────────────────────────────────────────────────────
 
-</div>
-
-<script>
 const BOOTH_DATA={"1": {"booth": "Hadichira", "blo": "Sarita Kumari Bisoyi", "blo_desig": "AWW", "blo_phone": "7854941259", "sup": "Ashok Swain", "sup_desig": "Teacher", "sup_phone": "9692369887"}, "2": {"booth": "Khirida", "blo": "Sugyani Swain", "blo_desig": "AWW", "blo_phone": "8117987422", "sup": "Ashok Swain", "sup_desig": "Teacher", "sup_phone": "9692369887"}, "3": {"booth": "Nuan Khirida", "blo": "Rajlaxmi Panda", "blo_desig": "AWW", "blo_phone": "7437951437", "sup": "Ashok Swain", "sup_desig": "Teacher", "sup_phone": "9692369887"}, "4": {"booth": "Chasamahuli", "blo": "Ratnamani Sahu", "blo_desig": "AWW", "blo_phone": "7853065601", "sup": "Ashok Swain", "sup_desig": "Teacher", "sup_phone": "9692369887"}, "5": {"booth": "B. Chikili", "blo": "Deepika Manjari Panda", "blo_desig": "AWW", "blo_phone": "7735765447", "sup": "Ashok Swain", "sup_desig": "Teacher", "sup_phone": "9692369887"}, "6": {"booth": "Sindhaguda", "blo": "Basanta Sabata", "blo_desig": "AWW", "blo_phone": "9668648038", "sup": "Ashok Swain", "sup_desig": "Teacher", "sup_phone": "9692369887"}, "7": {"booth": "Bandhaguda-1", "blo": "Sri Punia Naik", "blo_desig": "ASST. TR", "blo_phone": "9556494070", "sup": "Ashok Swain", "sup_desig": "Teacher", "sup_phone": "9692369887"}, "8": {"booth": "Bandhaguda-2", "blo": "Rinki Sethi", "blo_desig": "AWW", "blo_phone": "9114388910", "sup": "Ashok Swain", "sup_desig": "Teacher", "sup_phone": "9692369887"}, "9": {"booth": "Paramanandapur", "blo": "Gitanjali Shatapathi", "blo_desig": "AWW", "blo_phone": "9938865434", "sup": "Jaganath Sethy", "sup_desig": "Teacher", "sup_phone": "9437846836"}, "10": {"booth": "Shadangipalli", "blo": "Bhagirathi Sahu", "blo_desig": "ASST. TR", "blo_phone": "8328931617", "sup": "Ashok Swain", "sup_desig": "Teacher", "sup_phone": "9692369887"}, "11": {"booth": "Raktapata", "blo": "Sri Kali Charan Pradhan", "blo_desig": "ASST. TR", "blo_phone": "6370510660", "sup": "Driver Bisoyi", "sup_desig": "Teacher", "sup_phone": "7787882230"}, "12": {"booth": "K.Karadakana-I", "blo": "Sujata Patra", "blo_desig": "AWW", "blo_phone": "9778588123", "sup": "Driver Bisoyi", "sup_desig": "Teacher", "sup_phone": "7787882230"}, "13": {"booth": "K.Karadakana-II", "blo": "Madhuri Padhy", "blo_desig": "AWW", "blo_phone": "9776623626", "sup": "Driver Bisoyi", "sup_desig": "Teacher", "sup_phone": "7787882230"}, "14": {"booth": "Kumarapani-I", "blo": "Jhiani Pradhan", "blo_desig": "AWW", "blo_phone": "7735417079", "sup": "Driver Bisoyi", "sup_desig": "Teacher", "sup_phone": "7787882230"}, "15": {"booth": "Kumarapani-II", "blo": "Pabitra Mohan Bhuyan", "blo_desig": "ASST. TR", "blo_phone": "6372866230", "sup": "Driver Bisoyi", "sup_desig": "Teacher", "sup_phone": "7787882230"}, "16": {"booth": "Lauguda", "blo": "Urmila Panda", "blo_desig": "AWW", "blo_phone": "8144941646", "sup": "Driver Bisoyi", "sup_desig": "Teacher", "sup_phone": "7787882230"}, "17": {"booth": "Barasingi-I", "blo": "Sumita Kumari Gouda", "blo_desig": "AWW", "blo_phone": "8018963268", "sup": "Driver Bisoyi", "sup_desig": "Teacher", "sup_phone": "7787882230"}, "18": {"booth": "Barasingi-II", "blo": "Rashmita Panigrahy", "blo_desig": "AWW", "blo_phone": "8144744854", "sup": "Driver Bisoyi", "sup_desig": "Teacher", "sup_phone": "7787882230"}, "19": {"booth": "Pattapabuli", "blo": "Jayantilata Nanda", "blo_desig": "AWW", "blo_phone": "9938181566", "sup": "Jaganath Sethy", "sup_desig": "Teacher", "sup_phone": "9437846836"}, "20": {"booth": "Baramundali-I", "blo": "Bijaya Laxmi Sahu", "blo_desig": "AWW", "blo_phone": "6372886685", "sup": "Jaganath Sethy", "sup_desig": "Teacher", "sup_phone": "9437846836"}, "21": {"booth": "Baramundali-II", "blo": "Mithunu Sethi", "blo_desig": "ASST. TR", "blo_phone": "9556249624", "sup": "Jaganath Sethy", "sup_desig": "Teacher", "sup_phone": "9437846836"}, "22": {"booth": "BARIKOT", "blo": "Sabita Panigrahi", "blo_desig": "ASST. TR", "blo_phone": "9439371151", "sup": "Jaganath Sethy", "sup_desig": "Teacher", "sup_phone": "9437846836"}, "23": {"booth": "Badagad", "blo": "Sulochan Panigrahy", "blo_desig": "AWW", "blo_phone": "8018379848", "sup": "Jaganath Sethy", "sup_desig": "Teacher", "sup_phone": "9437846836"}, "24": {"booth": "Laxminarayanapur", "blo": "Jayasree Panigrahy", "blo_desig": "AWW", "blo_phone": "6370751690", "sup": "Jaganath Sethy", "sup_desig": "Teacher", "sup_phone": "9437846836"}, "25": {"booth": "Kulagad-1", "blo": "Rashmita Kumari Bisoyi", "blo_desig": "AWW", "blo_phone": "9777166411", "sup": "Ashok Swain", "sup_desig": "Teacher", "sup_phone": "9692369887"}, "26": {"booth": "Kulagad-2", "blo": "Gitanjali Nayak", "blo_desig": "AWW", "blo_phone": "9668449799", "sup": "Ashok Swain", "sup_desig": "Teacher", "sup_phone": "9692369887"}, "27": {"booth": "Dashamundali", "blo": "Kalyani Panigrahy", "blo_desig": "AWW", "blo_phone": "8658028769", "sup": "Santosh Panigrahy", "sup_desig": "Teacher", "sup_phone": "9937860882"}, "28": {"booth": "Khamar1", "blo": "Bisikeshan Natua", "blo_desig": "ASST. TR", "blo_phone": "9938516568", "sup": "Santosh Panigrahy", "sup_desig": "Teacher", "sup_phone": "9937860882"}, "29": {"booth": "Patrapur", "blo": "Kesab Behera", "blo_desig": "ASST. TR", "blo_phone": "7873377367", "sup": "Santosh Panigrahy", "sup_desig": "Teacher", "sup_phone": "9937860882"}, "30": {"booth": "Mahupadar", "blo": "Tuni Bisoyi", "blo_desig": "AWW", "blo_phone": "9438403901", "sup": "Santosh Panigrahy", "sup_desig": "Teacher", "sup_phone": "9937860882"}, "31": {"booth": "Dhinkisal", "blo": "Mangal Prasad Padhi", "blo_desig": "ASST. TR", "blo_phone": "7894069026", "sup": "Santosh Panigrahy", "sup_desig": "Teacher", "sup_phone": "9937860882"}, "32": {"booth": "G.NUAPALLI", "blo": "Sili Kumari Swain", "blo_desig": "AWW", "blo_phone": "8018579520", "sup": "Santosh Panigrahy", "sup_desig": "Teacher", "sup_phone": "9937860882"}, "33": {"booth": "Ambuabadi", "blo": "Basanti Sethy", "blo_desig": "AWW", "blo_phone": "9556158932", "sup": "Santosh Panigrahy", "sup_desig": "Teacher", "sup_phone": "9937860882"}, "34": {"booth": "Kerikerijhola", "blo": "Kusali Pattnayak", "blo_desig": "AWW", "blo_phone": "7381784187", "sup": "Santosh Panigrahy", "sup_desig": "Teacher", "sup_phone": "9937860882"}, "35": {"booth": "Padampur", "blo": "Mamata Kumari Patro", "blo_desig": "AWW", "blo_phone": "6372287754", "sup": "Santosh Panigrahy", "sup_desig": "Teacher", "sup_phone": "9937860882"}, "36": {"booth": "Harikrushnapur", "blo": "Jyotirmayi Misro", "blo_desig": "AWW", "blo_phone": "8599812504", "sup": "Jaganath Sethy", "sup_desig": "Teacher", "sup_phone": "9437846836"}, "37": {"booth": "Ramagiri", "blo": "Rohini Tripathy", "blo_desig": "ASST. TR", "blo_phone": "8270328406", "sup": "Jaganath Sethy", "sup_desig": "Teacher", "sup_phone": "9437846836"}, "38": {"booth": "Patapalli", "blo": "Bharati Achary", "blo_desig": "AWW", "blo_phone": "9556515120", "sup": "Jaganath Sethy", "sup_desig": "Teacher", "sup_phone": "9437846836"}, "39": {"booth": "Seragad-I", "blo": "Mahendra Kumar Sahu", "blo_desig": "ASST. TR", "blo_phone": "9178089264", "sup": "Anil Kumar Tripathy", "sup_desig": "Teacher", "sup_phone": "7381558310"}, "40": {"booth": "Seragad-II", "blo": "Ninati Kumari Padhy", "blo_desig": "AWW", "blo_phone": "9348976044", "sup": "Anil Kumar Tripathy", "sup_desig": "Teacher", "sup_phone": "7381558310"}, "41": {"booth": "Seragad-III", "blo": "Sandhyarani Dash", "blo_desig": "AWW", "blo_phone": "7787848504", "sup": "Anil Kumar Tripathy", "sup_desig": "Teacher", "sup_phone": "7381558310"}, "42": {"booth": "Seragada-IV", "blo": "K. Padma Rao", "blo_desig": "AWW", "blo_phone": "7749081851", "sup": "Anil Kumar Tripathy", "sup_desig": "Teacher", "sup_phone": "7381558310"}, "43": {"booth": "Seragada-V", "blo": "Kamala Kumari Padhy", "blo_desig": "AWW", "blo_phone": "9668093849", "sup": "Anil Kumar Tripathy", "sup_desig": "Teacher", "sup_phone": "7381558310"}, "44": {"booth": "TAKARADA-I", "blo": "Malli Nayak", "blo_desig": "AWW", "blo_phone": "9777824390", "sup": "Susanta Kumar Pradhan", "sup_desig": "Teacher", "sup_phone": "9938782750"}, "45": {"booth": "TAKARADA-II", "blo": "Manjusri Mohapatro", "blo_desig": "ASST. TR", "blo_phone": "9777171721", "sup": "Susanta Kumar Pradhan", "sup_desig": "Teacher", "sup_phone": "9938782750"}, "46": {"booth": "Sagarapalli", "blo": "Sushil Kumar Murmu", "blo_desig": "ASST. TR", "blo_phone": "9556954409", "sup": "Santosh Panigrahy", "sup_desig": "Teacher", "sup_phone": "9937860882"}, "47": {"booth": "Bhusunda", "blo": "Kalu Charan Pradhan", "blo_desig": "ASST. TR", "blo_phone": "9778522691", "sup": "Santosh Panigrahy", "sup_desig": "Teacher", "sup_phone": "9937860882"}, "48": {"booth": "CHIKILI", "blo": "Lakshmipriya Padhy", "blo_desig": "AWW", "blo_phone": "8456982127", "sup": "Santosh Panigrahy", "sup_desig": "Teacher", "sup_phone": "9937860882"}, "49": {"booth": "Chhatrapdhepa", "blo": "S Dipanjali", "blo_desig": "AWW", "blo_phone": "9337557404", "sup": "Susanta Kumar Pradhan", "sup_desig": "Teacher", "sup_phone": "9938782750"}, "50": {"booth": "DHABALAPUR-I", "blo": "Rinki Pradhan", "blo_desig": "AWW", "blo_phone": "8144247271", "sup": "Susanta Kumar Pradhan", "sup_desig": "Teacher", "sup_phone": "9938782750"}, "51": {"booth": "DHABALADPUR-II", "blo": "Sujata Kumari Senapati", "blo_desig": "AWW", "blo_phone": "9439418409", "sup": "Susanta Kumar Pradhan", "sup_desig": "Teacher", "sup_phone": "9938782750"}, "52": {"booth": "KRUSHNACHHAI", "blo": "Siba Prasad Sahu", "blo_desig": "ASST. TR", "blo_phone": "7008893413", "sup": "Anil Kumar Tripathy", "sup_desig": "Teacher", "sup_phone": "7381558310"}, "53": {"booth": "KACHAKHANDI", "blo": "Sunita Kumari Panigrahi", "blo_desig": "AWW", "blo_phone": "8984150564", "sup": "Anil Kumar Tripathy", "sup_desig": "Teacher", "sup_phone": "7381558310"}, "54": {"booth": "Kirttipur", "blo": "Bijayalaxmi Patra", "blo_desig": "AWW", "blo_phone": "9668545620", "sup": "Anil Kumar Tripathy", "sup_desig": "Teacher", "sup_phone": "7381558310"}, "55": {"booth": "NARAYANPUR", "blo": "Kanhu Charan Behera", "blo_desig": "ASST. TR", "blo_phone": "8338808936", "sup": "Anil Kumar Tripathy", "sup_desig": "Teacher", "sup_phone": "7381558310"}, "56": {"booth": "Ramakrushnapur", "blo": "Rajendra Gouda", "blo_desig": "ASST. TR", "blo_phone": "9937110529", "sup": "Anil Kumar Tripathy", "sup_desig": "Teacher", "sup_phone": "7381558310"}, "57": {"booth": "ANDARASINGI", "blo": "Mamata Das", "blo_desig": "AWW", "blo_phone": "8018039235", "sup": "Anil Kumar Tripathy", "sup_desig": "Teacher", "sup_phone": "7381558310"}, "58": {"booth": "B.BERHAMPUR-I", "blo": "Sibashish Behera", "blo_desig": "ASST. TR", "blo_phone": "8249646166", "sup": "Susanta Kumar Pradhan", "sup_desig": "Teacher", "sup_phone": "9938782750"}, "59": {"booth": "B.BERHAMPUR-II", "blo": "Manoj Kumar Madala", "blo_desig": "ASST. TR", "blo_phone": "9938555563", "sup": "Susanta Kumar Pradhan", "sup_desig": "Teacher", "sup_phone": "9938782750"}, "60": {"booth": "SERANKUDA", "blo": "Jasmin Sahu", "blo_desig": "AWW", "blo_phone": "7064514907", "sup": "Susanta Kumar Pradhan", "sup_desig": "Teacher", "sup_phone": "9938782750"}, "61": {"booth": "Subalayapalli", "blo": "Nibedita Sahu", "blo_desig": "AWW", "blo_phone": "8260945416", "sup": "Susanta Kumar Pradhan", "sup_desig": "Teacher", "sup_phone": "9938782750"}, "62": {"booth": "SOLASOLA", "blo": "Jurinath Sethy", "blo_desig": "ASST. TR", "blo_phone": "9778985952", "sup": "Susanta Kumar Pradhan", "sup_desig": "Teacher", "sup_phone": "9938782750"}, "63": {"booth": "LANJIAPALLI", "blo": "Prafulla Ku Sahu", "blo_desig": "ASST. TR", "blo_phone": "7751089515", "sup": "Pratap Polai", "sup_desig": "Teacher", "sup_phone": "7787923852"}, "64": {"booth": "Ashokapur", "blo": "Pratap Kumar Polai", "blo_desig": "ASST. TR", "blo_phone": "7787923852", "sup": "Pratap Polai", "sup_desig": "Teacher", "sup_phone": "7787923852"}, "65": {"booth": "DHANANTARA-I", "blo": "Pratima Patra", "blo_desig": "AWW", "blo_phone": "7326898868", "sup": "Pratap Polai", "sup_desig": "Teacher", "sup_phone": "7787923852"}, "66": {"booth": "DHANANTARA-II", "blo": "Sumitra Sethy", "blo_desig": "AWW", "blo_phone": "9078815234", "sup": "Pratap Polai", "sup_desig": "Teacher", "sup_phone": "7787923852"}, "67": {"booth": "PATHARAPUNJI", "blo": "Runu Panda", "blo_desig": "AWW", "blo_phone": "9348274323", "sup": "Pratap Polai", "sup_desig": "Teacher", "sup_phone": "7787923852"}, "68": {"booth": "GOVINDAPUR-I", "blo": "Sangeeta Pradhan", "blo_desig": "AWW", "blo_phone": "7735611409", "sup": "Debabrata Pattanayak", "sup_desig": "Teacher", "sup_phone": "9861713324"}, "69": {"booth": "GOVINDAPUR-II", "blo": "Narayan Behera", "blo_desig": "ASST. TR", "blo_phone": "9556526393", "sup": "Debabrata Pattanayak", "sup_desig": "Teacher", "sup_phone": "9861713324"}, "70": {"booth": "GOVINDAPUR-III", "blo": "Babi Swain", "blo_desig": "AWW", "blo_phone": "8917507041", "sup": "Debabrata Pattanayak", "sup_desig": "Teacher", "sup_phone": "9861713324"}, "71": {"booth": "GOVINDAPUR-IV", "blo": "Manjula Kumari Jena", "blo_desig": "AWW", "blo_phone": "6371602435", "sup": "Debabrata Pattanayak", "sup_desig": "Teacher", "sup_phone": "9861713324"}, "72": {"booth": "DENGAPADARA-I", "blo": "Gitanjali Rana", "blo_desig": "AWW", "blo_phone": "9337000542", "sup": "Pratap Polai", "sup_desig": "Teacher", "sup_phone": "7787923852"}, "73": {"booth": "DENGAPADAR-II", "blo": "Banita Kumari Panigrahi", "blo_desig": "AWW", "blo_phone": "9692316505", "sup": "Pratap Polai", "sup_desig": "Teacher", "sup_phone": "7787923852"}, "74": {"booth": "BAKILIKANA-I", "blo": "Sulata Panigrahy", "blo_desig": "AWW", "blo_phone": "9348168077", "sup": "Pratap Polai", "sup_desig": "Teacher", "sup_phone": "7787923852"}, "75": {"booth": "BAKILIKANA-II", "blo": "Rashmita Polai", "blo_desig": "AWW", "blo_phone": "9106186641", "sup": "Pratap Polai", "sup_desig": "Teacher", "sup_phone": "7787923852"}, "76": {"booth": "BALIARASINGIPUR", "blo": "Prasanta Sabar", "blo_desig": "ASST. TR", "blo_phone": "7750000891", "sup": "Pratap Polai", "sup_desig": "Teacher", "sup_phone": "7787923852"}, "77": {"booth": "THURUBURAI-I", "blo": "Sonu Shabar", "blo_desig": "ASST. TR", "blo_phone": "8895583851", "sup": "Kalakar Prusty", "sup_desig": "Teacher", "sup_phone": "9861583733"}, "78": {"booth": "THURUBURAI-II", "blo": "Jayanti Panigrahi", "blo_desig": "AWW", "blo_phone": "6372825755", "sup": "Kalakar Prusty", "sup_desig": "Teacher", "sup_phone": "9861583733"}, "79": {"booth": "KHASAPA", "blo": "Pramila Chowdhury", "blo_desig": "AWW", "blo_phone": "9437773801", "sup": "Kalakar Prusty", "sup_desig": "Teacher", "sup_phone": "9861583733"}, "80": {"booth": "Baisipal", "blo": "Priyanka Pradhan", "blo_desig": "AWW", "blo_phone": "7750882381", "sup": "Kalakar Prusty", "sup_desig": "Teacher", "sup_phone": "9861583733"}, "81": {"booth": "KURULA-I", "blo": "B Janama Patra", "blo_desig": "AWW", "blo_phone": "8144432909", "sup": "Kalakar Prusty", "sup_desig": "Teacher", "sup_phone": "9861583733"}, "82": {"booth": "KURULA-II", "blo": "S Bijayalaxmi Patro", "blo_desig": "AWW", "blo_phone": "8018468582", "sup": "Kalakar Prusty", "sup_desig": "Teacher", "sup_phone": "9861583733"}, "83": {"booth": "Mahirakana", "blo": "Gopalkrushna Panigrahi", "blo_desig": "ASST. TR", "blo_phone": "9348847552", "sup": "Kalakar Prusty", "sup_desig": "Teacher", "sup_phone": "9861583733"}, "84": {"booth": "GOTHAGAM-I", "blo": "Sumitra Padhy", "blo_desig": "AWW", "blo_phone": "9861606180", "sup": "Debabrata Pattanayak", "sup_desig": "Teacher", "sup_phone": "9861713324"}, "85": {"booth": "GOTHAGAM-II", "blo": "Biswajit Dash", "blo_desig": "ASST. TR", "blo_phone": "9861698887", "sup": "Debabrata Pattanayak", "sup_desig": "Teacher", "sup_phone": "9861713324"}, "86": {"booth": "KANABHAGA", "blo": "Runu Panigrahy", "blo_desig": "AWW", "blo_phone": "8018604024", "sup": "Debabrata Pattanayak", "sup_desig": "Teacher", "sup_phone": "9861713324"}, "87": {"booth": "PUNADA-I", "blo": "Gagana Bihari Gouda", "blo_desig": "ASST. TR", "blo_phone": "8328804485", "sup": "Debabrata Pattanayak", "sup_desig": "Teacher", "sup_phone": "9861713324"}, "88": {"booth": "PUNADA-II", "blo": "Anuchaya Behera", "blo_desig": "AWW", "blo_phone": "9861599278", "sup": "Debabrata Pattanayak", "sup_desig": "Teacher", "sup_phone": "9861713324"}, "89": {"booth": "MARUDI JAGANATHPUR", "blo": "Ajit Ku Mahapatro", "blo_desig": "ASST. TR", "blo_phone": "9778459094", "sup": "Debabrata Pattanayak", "sup_desig": "Teacher", "sup_phone": "9861713324"}, "90": {"booth": "PODANGI (GHUMUSARA)", "blo": "Bharati Kumari Patra", "blo_desig": "AWW", "blo_phone": "9437423557", "sup": "D.Keshab Rao", "sup_desig": "Teacher", "sup_phone": "8917373899"}, "91": {"booth": "PODANGI (CHATRAPUR)-I", "blo": "Gitanjali Padhy", "blo_desig": "AWW", "blo_phone": "9778549851", "sup": "D.Keshab Rao", "sup_desig": "Teacher", "sup_phone": "8917373899"}, "92": {"booth": "PODANGI (CHATRAPUR)-II", "blo": "Mithun Das", "blo_desig": "Teacher", "blo_phone": "9348405361", "sup": "D.Keshab Rao", "sup_desig": "Teacher", "sup_phone": "8917373899"}, "93": {"booth": "B.NUAPALLI", "blo": "Pratima Kumari Swain", "blo_desig": "AWW", "blo_phone": "9178893434", "sup": "Tarini Charan Nahak", "sup_desig": "Teacher", "sup_phone": "9861360916"}, "94": {"booth": "NARENDRAPUR-I", "blo": "Bidesi Sethy", "blo_desig": "ASST. TR", "blo_phone": "9861107225", "sup": "Tarini Charan Nahak", "sup_desig": "Teacher", "sup_phone": "9861360916"}, "95": {"booth": "NARENDRAPUR-II", "blo": "Bidyabati Polai", "blo_desig": "AWW", "blo_phone": "7735268620", "sup": "Tarini Charan Nahak", "sup_desig": "Teacher", "sup_phone": "9861360916"}, "96": {"booth": "Kirtipur", "blo": "Arundhati Tripathy", "blo_desig": "AWW", "blo_phone": "9078179739", "sup": "Tarini Charan Nahak", "sup_desig": "Teacher", "sup_phone": "9861360916"}, "97": {"booth": "PAKIDI", "blo": "Babita Kumari Patro", "blo_desig": "AWW", "blo_phone": "9861515001", "sup": "Arun Kumar Swain", "sup_desig": "Teacher", "sup_phone": "7064247350"}, "98": {"booth": "GUDISARA", "blo": "Santoshini Behera", "blo_desig": "AWW", "blo_phone": "8249294368", "sup": "Tarini Charan Nahak", "sup_desig": "Teacher", "sup_phone": "9861360916"}, "99": {"booth": "BRAHMANACHHAI-I", "blo": "Anil Kumar Swain", "blo_desig": "ASST. TR", "blo_phone": "9861150404", "sup": "Tarini Charan Nahak", "sup_desig": "Teacher", "sup_phone": "9861360916"}, "100": {"booth": "BRAHMANACHHAI-II", "blo": "Bhola Behera", "blo_desig": "ASST. TR", "blo_phone": "7504888754", "sup": "Tarini Charan Nahak", "sup_desig": "Teacher", "sup_phone": "9861360916"}, "101": {"booth": "BRAHMANACHHAI-III", "blo": "Lakshman Behera", "blo_desig": "ASST. TR", "blo_phone": "9861102833", "sup": "Tarini Charan Nahak", "sup_desig": "Teacher", "sup_phone": "9861360916"}, "102": {"booth": "PITALA-I", "blo": "Gitanjali Nayak", "blo_desig": "AWW", "blo_phone": "7377144554", "sup": "Arun Kumar Swain", "sup_desig": "Teacher", "sup_phone": "7064247350"}, "103": {"booth": "PITALA-II", "blo": "Puspanjali Panda", "blo_desig": "AWW", "blo_phone": "9438280266", "sup": "Arun Kumar Swain", "sup_desig": "Teacher", "sup_phone": "7064247350"}, "104": {"booth": "PITALA-III", "blo": "A Sujata Patro", "blo_desig": "AWW", "blo_phone": "9090334343", "sup": "Arun Kumar Swain", "sup_desig": "Teacher", "sup_phone": "7064247350"}, "105": {"booth": "PITALA-IV", "blo": "Namita Behera", "blo_desig": "AWW", "blo_phone": "9692011787", "sup": "Arun Kumar Swain", "sup_desig": "Teacher", "sup_phone": "7064247350"}, "106": {"booth": "RAMACHANDRAPUR-I", "blo": "Sabita Kumari Devi", "blo_desig": "AWW", "blo_phone": "6370283766", "sup": "Tarini Charan Nahak", "sup_desig": "Teacher", "sup_phone": "9861360916"}, "107": {"booth": "RAMACHANDRAPUR-II", "blo": "Ranjita Kumari Maharana", "blo_desig": "AWW", "blo_phone": "9777331385", "sup": "Tarini Charan Nahak", "sup_desig": "Teacher", "sup_phone": "9861360916"}, "108": {"booth": "SANTOSHPUR-I", "blo": "Ranjita Kumari Rath", "blo_desig": "AWW", "blo_phone": "9337813704", "sup": "Arun Kumar Swain", "sup_desig": "Teacher", "sup_phone": "7064247350"}, "109": {"booth": "SANTOSHPUR", "blo": "Manisha Nayak", "blo_desig": "AWW", "blo_phone": "7205588025", "sup": "Arun Kumar Swain", "sup_desig": "Teacher", "sup_phone": "7064247350"}, "110": {"booth": "TANHARA-I", "blo": "Tuni Kumari Behera", "blo_desig": "AWW", "blo_phone": "9338273959", "sup": "Arun Kumar Swain", "sup_desig": "Teacher", "sup_phone": "7064247350"}, "111": {"booth": "TANHARA-II", "blo": "Ambika Panda", "blo_desig": "AWW", "blo_phone": "8260865835", "sup": "Arun Kumar Swain", "sup_desig": "Teacher", "sup_phone": "7064247350"}, "112": {"booth": "KANJIAMMA-I", "blo": "Pramod Kumar Behera", "blo_desig": "ASST. TR", "blo_phone": "7608899263", "sup": "Arun Kumar Swain", "sup_desig": "Teacher", "sup_phone": "7064247350"}, "113": {"booth": "KANJIAMA-II", "blo": "Sumitra Behera", "blo_desig": "AWW", "blo_phone": "8917233931", "sup": "Arun Kumar Swain", "sup_desig": "Teacher", "sup_phone": "7064247350"}, "114": {"booth": "CHANDULI", "blo": "Saroj Kumar Padhi", "blo_desig": "Teacher", "blo_phone": "9861579353", "sup": "D.Keshab Rao", "sup_desig": "Teacher", "sup_phone": "8917373899"}, "115": {"booth": "KHANDARA-I", "blo": "Ladukishor Gouda", "blo_desig": "Teacher", "blo_phone": "9178242941", "sup": "D.Keshab Rao", "sup_desig": "Teacher", "sup_phone": "8917373899"}, "116": {"booth": "KHANDARA-II", "blo": "Abani Das", "blo_desig": "Teacher", "blo_phone": "9778586391", "sup": "D.Keshab Rao", "sup_desig": "Teacher", "sup_phone": "8917373899"}, "117": {"booth": "BURUPADA-I", "blo": "Ambika Pradhan", "blo_desig": "AWW", "blo_phone": "9668832815", "sup": "D.Keshab Rao", "sup_desig": "Teacher", "sup_phone": "8917373899"}, "118": {"booth": "BURUPADA-IV", "blo": "Chinmayee Bhuyan", "blo_desig": "AWW", "blo_phone": "7381132192", "sup": "D.Keshab Rao", "sup_desig": "Teacher", "sup_phone": "8917373899"}, "119": {"booth": "BURUPADA-II", "blo": "Sangeeta Sethi", "blo_desig": "AWW", "blo_phone": "7328099269", "sup": "D.Keshab Rao", "sup_desig": "Teacher", "sup_phone": "8917373899"}, "120": {"booth": "BURPADA-III", "blo": "Kalpana Pradhan", "blo_desig": "AWW", "blo_phone": "9692404422", "sup": "D.Keshab Rao", "sup_desig": "Teacher", "sup_phone": "8917373899"}, "121": {"booth": "Nuaburupada", "blo": "Reena Nahak", "blo_desig": "AWW", "blo_phone": "7978271721", "sup": "D.Keshab Rao", "sup_desig": "Teacher", "sup_phone": "8917373899"}, "122": {"booth": "SOMAPUR", "blo": "S.Motialu", "blo_desig": "AWW", "blo_phone": "8249878783", "sup": "Sanatan Behera", "sup_desig": "Teacher", "sup_phone": "9861150059"}, "123": {"booth": "SINGIPUR", "blo": "Sarita Dakua", "blo_desig": "AWW", "blo_phone": "9938949195", "sup": "Sanatan Behera", "sup_desig": "Teacher", "sup_phone": "9861150059"}, "124": {"booth": "Hinjilicut-I", "blo": "Reeta Gouda", "blo_desig": "AWW", "blo_phone": "7008026248", "sup": "Akhila Kumar Panda", "sup_desig": "CRCC", "sup_phone": "7978395041"}, "125": {"booth": "Hinjilicut-II", "blo": "Rasmita Panda", "blo_desig": "AWW", "blo_phone": "9090333471", "sup": "Akhila Kumar Panda", "sup_desig": "CRCC", "sup_phone": "7978395041"}, "126": {"booth": "Hinjilicut-III", "blo": "Sumitra Sahu", "blo_desig": "AWW", "blo_phone": "9348502204", "sup": "Akhila Kumar Panda", "sup_desig": "CRCC", "sup_phone": "7978395041"}, "127": {"booth": "Hinjilicut-IV", "blo": "Preetilata Sahu", "blo_desig": "Teacher", "blo_phone": "9337266616", "sup": "Akhila Kumar Panda", "sup_desig": "CRCC", "sup_phone": "7978395041"}, "128": {"booth": "Hinjilicut-V", "blo": "Saudamini Behera", "blo_desig": "AWW", "blo_phone": "9861571583", "sup": "Akhila Kumar Panda", "sup_desig": "CRCC", "sup_phone": "7978395041"}, "129": {"booth": "Hinjilicut-VI", "blo": "Sandhya Kumari Sahu", "blo_desig": "AWW", "blo_phone": "9040802393", "sup": "Akhila Kumar Panda", "sup_desig": "CRCC", "sup_phone": "7978395041"}, "130": {"booth": "HINJILICUT-XV", "blo": "Indira Kumari Das", "blo_desig": "AWW", "blo_phone": "8093892360", "sup": "Akhila Kumar Panda", "sup_desig": "CRCC", "sup_phone": "7978395041"}, "131": {"booth": "Hinjilicut-VII", "blo": "Sangeeta Dalai", "blo_desig": "Teacher", "blo_phone": "8144510590", "sup": "Akhila Kumar Panda", "sup_desig": "CRCC", "sup_phone": "7978395041"}, "132": {"booth": "Hinjilicut-VIII", "blo": "Gayatri Pattanayak", "blo_desig": "AWW", "blo_phone": "7008026800", "sup": "Akhila Kumar Panda", "sup_desig": "CRCC", "sup_phone": "7978395041"}, "133": {"booth": "Hinjilicut-IX", "blo": "Sunita Panigrahy", "blo_desig": "AWW", "blo_phone": "7008648668", "sup": "Akhila Kumar Panda", "sup_desig": "CRCC", "sup_phone": "7978395041"}, "134": {"booth": "Hinjilicut-X", "blo": "Sunita Kumari Sahu", "blo_desig": "AWW", "blo_phone": "7008770792", "sup": "Raghunath Sahu", "sup_desig": "Teacher", "sup_phone": "9439363740"}, "135": {"booth": "Hinjilicut-XI", "blo": "Sashmita Dash", "blo_desig": "AWW", "blo_phone": "9439518576", "sup": "Raghunath Sahu", "sup_desig": "Teacher", "sup_phone": "9439363740"}, "136": {"booth": "Hinjilicut-XII", "blo": "Chiman Kumar Sahu", "blo_desig": "Teacher", "blo_phone": "7377424471", "sup": "Raghunath Sahu", "sup_desig": "Teacher", "sup_phone": "9439363740"}, "137": {"booth": "Hinjilicut-XIII", "blo": "Geetarani Maharana", "blo_desig": "Teacher", "blo_phone": "7682081001", "sup": "Raghunath Sahu", "sup_desig": "Teacher", "sup_phone": "9439363740"}, "138": {"booth": "Hinjilicut-XIV", "blo": "Bulu Nahak", "blo_desig": "Teacher", "blo_phone": "9583246766", "sup": "Raghunath Sahu", "sup_desig": "Teacher", "sup_phone": "9439363740"}, "139": {"booth": "ANKORADA-1", "blo": "Nirupama Dash", "blo_desig": "Teacher", "blo_phone": "6372976656", "sup": "Raghunath Sahu", "sup_desig": "Teacher", "sup_phone": "9439363740"}, "140": {"booth": "ANKORADA-II", "blo": "Sibaram Dalai", "blo_desig": "Teacher", "blo_phone": "8018313275", "sup": "Raghunath Sahu", "sup_desig": "Teacher", "sup_phone": "9439363740"}, "141": {"booth": "ANKORADA-III", "blo": "Ranjita Kumari Bhoula", "blo_desig": "AWW", "blo_phone": "8249327812", "sup": "Raghunath Sahu", "sup_desig": "Teacher", "sup_phone": "9439363740"}, "142": {"booth": "KHARIDA-I", "blo": "Sandhyarani Pattanayak", "blo_desig": "AWW", "blo_phone": "9337340233", "sup": "Gopal Krishna Swain", "sup_desig": "CRCC", "sup_phone": "9938964340"}, "143": {"booth": "KHARIDA-II", "blo": "Bishnu Behera", "blo_desig": "AWW", "blo_phone": "7852942350", "sup": "Gopal Krishna Swain", "sup_desig": "CRCC", "sup_phone": "9938964340"}, "144": {"booth": "SIKIRI-1", "blo": "Tapasi Kumari Palo", "blo_desig": "AWW", "blo_phone": "6371830730", "sup": "Rama Hari Dash", "sup_desig": "Teacher", "sup_phone": "9438156511"}, "145": {"booth": "SIKIRI-2", "blo": "Mithuranjan Sarkar", "blo_desig": "Teacher", "blo_phone": "8280017489", "sup": "Rama Hari Dash", "sup_desig": "Teacher", "sup_phone": "9438156511"}, "146": {"booth": "SIKIRI-3", "blo": "Ramahari Dash", "blo_desig": "Teacher", "blo_phone": "6370175143", "sup": "Rama Hari Dash", "sup_desig": "Teacher", "sup_phone": "9438156511"}, "147": {"booth": "SIKIRI-IV", "blo": "Hariballava Gamanga", "blo_desig": "Teacher", "blo_phone": "8480049905", "sup": "Rama Hari Dash", "sup_desig": "Teacher", "sup_phone": "9438156511"}, "148": {"booth": "SIKIRI-V", "blo": "Sandhya Rani Muni", "blo_desig": "AWW", "blo_phone": "9337448872", "sup": "Rama Hari Dash", "sup_desig": "Teacher", "sup_phone": "9438156511"}, "149": {"booth": "GIRIA NARAYANPUR", "blo": "Jeeshukhrista Pradhan", "blo_desig": "Teacher", "blo_phone": "7978338718", "sup": "Gopal Krishna Swain", "sup_desig": "CRCC", "sup_phone": "9938964340"}, "150": {"booth": "Giria Narayan Pur-II", "blo": "Rinki Dalei", "blo_desig": "AWW", "blo_phone": "9178035239", "sup": "Gopal Krishna Swain", "sup_desig": "CRCC", "sup_phone": "9938964340"}, "151": {"booth": "ALLAPUR-I", "blo": "Tikili Pradhan", "blo_desig": "AWW", "blo_phone": "9776785102", "sup": "Gopal Krishna Swain", "sup_desig": "CRCC", "sup_phone": "9938964340"}, "152": {"booth": "ALLAPUR-II", "blo": "Gitanjali Pradhan", "blo_desig": "AWW", "blo_phone": "7873692000", "sup": "Gopal Krishna Swain", "sup_desig": "CRCC", "sup_phone": "9938964340"}, "153": {"booth": "NANDIKA-I", "blo": "Rasmita Kumari Behera", "blo_desig": "Teacher", "blo_phone": "8249551797", "sup": "Jadab Sahu", "sup_desig": "Teacher", "sup_phone": "9348549560"}, "154": {"booth": "NANDIKA-II", "blo": "Gopal Krushna Swain", "blo_desig": "Teacher", "blo_phone": "9938964340", "sup": "Jadab Sahu", "sup_desig": "Teacher", "sup_phone": "9348549560"}, "155": {"booth": "NANDIKA-III", "blo": "Sadashiba Tripathy", "blo_desig": "Teacher", "blo_phone": "9437521211", "sup": "Jadab Sahu", "sup_desig": "Teacher", "sup_phone": "9348549560"}, "156": {"booth": "RALABA-I", "blo": "Bulu Sethy", "blo_desig": "Teacher", "blo_phone": "8598052031", "sup": "Gopal Krishna Swain", "sup_desig": "CRCC", "sup_phone": "9938964340"}, "157": {"booth": "RALAB-II", "blo": "Sarada Rani Badhei", "blo_desig": "AWW", "blo_phone": "9668246151", "sup": "Gopal Krishna Swain", "sup_desig": "CRCC", "sup_phone": "9938964340"}, "158": {"booth": "RALABA-III", "blo": "Khirabdhi Tanaya Pradhan", "blo_desig": "AWW", "blo_phone": "9437956566", "sup": "Gopal Krishna Swain", "sup_desig": "CRCC", "sup_phone": "9938964340"}, "159": {"booth": "SASANA AMBAGAM-I", "blo": "Tuna Swain", "blo_desig": "Teacher", "blo_phone": "9337994351", "sup": "Jadab Sahu", "sup_desig": "Teacher", "sup_phone": "9348549560"}, "160": {"booth": "SASAN AMBAGAM-II", "blo": "Trilochan Sahu", "blo_desig": "Teacher", "blo_phone": "9853428284", "sup": "Jadab Sahu", "sup_desig": "Teacher", "sup_phone": "9348549560"}, "161": {"booth": "SARU-I", "blo": "K Karunakar Reddy", "blo_desig": "Teacher", "blo_phone": "9337352761", "sup": "Sanatan Behera", "sup_desig": "Teacher", "sup_phone": "9861150059"}, "162": {"booth": "SARU-II", "blo": "Smita Devi Mahapatro", "blo_desig": "AWW", "blo_phone": "9556565647", "sup": "Sanatan Behera", "sup_desig": "Teacher", "sup_phone": "9861150059"}, "163": {"booth": "SARU-III", "blo": "Snigdhasri Padhi", "blo_desig": "AWW", "blo_phone": "9937960620", "sup": "Sanatan Behera", "sup_desig": "Teacher", "sup_phone": "9861150059"}, "164": {"booth": "P.Ramachandrapur", "blo": "Kabita Sahu", "blo_desig": "AWW", "blo_phone": "9937036636", "sup": "Raghunath Sahu", "sup_desig": "Teacher", "sup_phone": "9439363740"}, "165": {"booth": "POCHILIMA-I", "blo": "Sagarika Dash", "blo_desig": "AWW", "blo_phone": "8917611462", "sup": "Sanatan Behera", "sup_desig": "Teacher", "sup_phone": "9861150059"}, "166": {"booth": "POCHILIMA-II", "blo": "Kapal Sumitra", "blo_desig": "AWW", "blo_phone": "9437606104", "sup": "Sanatan Behera", "sup_desig": "Teacher", "sup_phone": "9861150059"}, "167": {"booth": "VENKATARAIPALLI", "blo": "Anuradha Singh", "blo_desig": "Teacher", "blo_phone": "8093888459", "sup": "Sanatan Behera", "sup_desig": "Teacher", "sup_phone": "9861150059"}, "168": {"booth": "Bugudapalli", "blo": "Sudeshna Dakua", "blo_desig": "AWW", "blo_phone": "8093758804", "sup": "Sanatan Behera", "sup_desig": "Teacher", "sup_phone": "9861150059"}, "169": {"booth": "BALARAMPUR", "blo": "Kasturi Patro", "blo_desig": "AWW", "blo_phone": "6370350616", "sup": "Sanatan Behera", "sup_desig": "Teacher", "sup_phone": "9861150059"}, "170": {"booth": "Khairabethi", "blo": "Sabita Kumari Behera", "blo_desig": "AWW", "blo_phone": "9668494212", "sup": "Kalakar Prusty", "sup_desig": "Teacher", "sup_phone": "9861583733"}, "171": {"booth": "LAXMIPUR", "blo": "Snehalata Pattanayak", "blo_desig": "AWW", "blo_phone": "9337363973", "sup": "Kalakar Prusty", "sup_desig": "Teacher", "sup_phone": "9861583733"}, "172": {"booth": "ALARIGADA-I", "blo": "Kanhu Charan Madala", "blo_desig": "ASST. TR", "blo_phone": "8763754995", "sup": "Kalakar Prusty", "sup_desig": "Teacher", "sup_phone": "9861583733"}, "173": {"booth": "ALARIGADA-II", "blo": "Rohita Kumar Sethi", "blo_desig": "ASST. TR", "blo_phone": "9861941903", "sup": "Kalakar Prusty", "sup_desig": "Teacher", "sup_phone": "9861583733"}, "174": {"booth": "PALIPADMANAVPUR", "blo": "S Tulasi", "blo_desig": "AWW", "blo_phone": "8847822235", "sup": "Kailas Chandra Sahu", "sup_desig": "Teacher", "sup_phone": "8328894614"}, "175": {"booth": "MAKARAJHOLA-I", "blo": "D. Sabitri", "blo_desig": "AWW", "blo_phone": "9090777860", "sup": "Kailas Chandra Sahu", "sup_desig": "Teacher", "sup_phone": "8328894614"}, "176": {"booth": "MAKARAJHOLA-II", "blo": "R Namita", "blo_desig": "AWW", "blo_phone": "7377024063", "sup": "Kailas Chandra Sahu", "sup_desig": "Teacher", "sup_phone": "8328894614"}, "177": {"booth": "MAKARAJHOLA-III", "blo": "Geetanjali Pani", "blo_desig": "AWW", "blo_phone": "9827373368", "sup": "Kailas Chandra Sahu", "sup_desig": "Teacher", "sup_phone": "8328894614"}, "178": {"booth": "SMARAJHOLA-I", "blo": "D Yochana", "blo_desig": "AWW", "blo_phone": "9078517119", "sup": "Kailas Chandra Sahu", "sup_desig": "Teacher", "sup_phone": "8328894614"}, "179": {"booth": "SMARAJHOLA-II", "blo": "Rashmita Maharana", "blo_desig": "AWW", "blo_phone": "7751867589", "sup": "Kailas Chandra Sahu", "sup_desig": "Teacher", "sup_phone": "8328894614"}, "180": {"booth": "BADAKHANDI", "blo": "N Prabhati", "blo_desig": "AWW", "blo_phone": "9938620902", "sup": "Kailas Chandra Sahu", "sup_desig": "Teacher", "sup_phone": "8328894614"}, "181": {"booth": "BADAKHANDI", "blo": "P Kumari", "blo_desig": "AWW", "blo_phone": "9337177206", "sup": "Kailas Chandra Sahu", "sup_desig": "Teacher", "sup_phone": "8328894614"}, "182": {"booth": "RANGANIPALLI", "blo": "Mami Sahu", "blo_desig": "AWW", "blo_phone": "8169713455", "sup": "Kailas Chandra Sahu", "sup_desig": "Teacher", "sup_phone": "8328894614"}, "183": {"booth": "GOPINATHPUR-I", "blo": "Lokanath Behera", "blo_desig": "Teacher", "blo_phone": "6370358011", "sup": "Kailas Chandra Sahu", "sup_desig": "Teacher", "sup_phone": "8328894614"}, "184": {"booth": "GOPINATHPUR-II", "blo": "B Bhimaraju Acharya", "blo_desig": "Teacher", "blo_phone": "9337392972", "sup": "Kailas Chandra Sahu", "sup_desig": "Teacher", "sup_phone": "8328894614"}, "185": {"booth": "CHAITANYAPADA", "blo": "G. Jyochana", "blo_desig": "AWW", "blo_phone": "9438076484", "sup": "Madan Mohan Mallik", "sup_desig": "Teacher", "sup_phone": "8763456633"}, "186": {"booth": "Dayapali-I", "blo": "Sibasankar Uthansingh", "blo_desig": "teacher", "blo_phone": "7326937540", "sup": "Suresh Kumar Sahu", "sup_desig": "Teacher", "sup_phone": "9078473122"}, "187": {"booth": "Dayapali-II", "blo": "Binapani Gantayat", "blo_desig": "Teacher", "blo_phone": "9348072262", "sup": "Suresh Kumar Sahu", "sup_desig": "Teacher", "sup_phone": "9078473122"}, "188": {"booth": "DURUBANDHA-I", "blo": "Ramesh Sabar", "blo_desig": "Teacher", "blo_phone": "9938873090", "sup": "Suresh Kumar Sahu", "sup_desig": "Teacher", "sup_phone": "9078473122"}, "189": {"booth": "DURUBANDHA-II", "blo": "Lopamudra Sethi", "blo_desig": "Teacher", "blo_phone": "7789978870", "sup": "Suresh Kumar Sahu", "sup_desig": "Teacher", "sup_phone": "9078473122"}, "190": {"booth": "DUBANDHA-III", "blo": "Saheba Sabat", "blo_desig": "Teacher", "blo_phone": "8895245454", "sup": "Suresh Kumar Sahu", "sup_desig": "Teacher", "sup_phone": "9078473122"}, "191": {"booth": "KHAJIPALLI", "blo": "Promoda Maharana", "blo_desig": "Teacher", "blo_phone": "9337925576", "sup": "Suresh Kumar Sahu", "sup_desig": "Teacher", "sup_phone": "9078473122"}, "192": {"booth": "PALASI", "blo": "Kamala Sahu", "blo_desig": "AWW", "blo_phone": "9348339940", "sup": "Susanta Kumar Padhy", "sup_desig": "Teacher", "sup_phone": "9078961931"}, "193": {"booth": "MARAPALLI", "blo": "Trilochan Sahu", "blo_desig": "Teacher", "blo_phone": "8328850637", "sup": "Susanta Kumar Padhy", "sup_desig": "Teacher", "sup_phone": "9078961931"}, "194": {"booth": "Shikulipalli", "blo": "Anita Dalabehera", "blo_desig": "Teacher", "blo_phone": "6371301799", "sup": "Susanta Kumar Padhy", "sup_desig": "Teacher", "sup_phone": "9078961931"}, "195": {"booth": "GANDALA-I", "blo": "Bijaya Kumar Patra", "blo_desig": "Teacher", "blo_phone": "9438430342", "sup": "Susanta Kumar Padhy", "sup_desig": "Teacher", "sup_phone": "9078961931"}, "196": {"booth": "GANDALA-II", "blo": "Namita Kumari Pattanaik", "blo_desig": "Teacher", "blo_phone": "9439803321", "sup": "Susanta Kumar Padhy", "sup_desig": "Teacher", "sup_phone": "9078961931"}, "197": {"booth": "GANDALA-III", "blo": "Jhili Panigrahy", "blo_desig": "AWW", "blo_phone": "7873988685", "sup": "Susanta Kumar Padhy", "sup_desig": "Teacher", "sup_phone": "9078961931"}, "198": {"booth": "DARUBHADRA", "blo": "Rashmiranjan Behera", "blo_desig": "Teacher", "blo_phone": "7008099869", "sup": "Suresh Kumar Sahu", "sup_desig": "Teacher", "sup_phone": "9078473122"}, "199": {"booth": "MOHANAPALLI", "blo": "P Geetanjali", "blo_desig": "AWW", "blo_phone": "9668019623", "sup": "Suresh Kumar Sahu", "sup_desig": "Teacher", "sup_phone": "9078473122"}, "200": {"booth": "GODARAPALLI", "blo": "Kuresh Paricha", "blo_desig": "Teacher", "blo_phone": "9938568175", "sup": "Suresh Kumar Sahu", "sup_desig": "Teacher", "sup_phone": "9078473122"}, "201": {"booth": "KANCHURU-I", "blo": "Santosini Sahu", "blo_desig": "AWW", "blo_phone": "8763449107", "sup": "Madan Mohan Mallik", "sup_desig": "Teacher", "sup_phone": "8763456633"}, "202": {"booth": "KANCHURU-II", "blo": "Madhusudan Mishra", "blo_desig": "Teacher", "blo_phone": "9861814175", "sup": "Madan Mohan Mallik", "sup_desig": "Teacher", "sup_phone": "8763456633"}, "203": {"booth": "KANTEKOLI-I", "blo": "Amita Kumari Das", "blo_desig": "Teacher", "blo_phone": "8658908543", "sup": "Madan Mohan Mallik", "sup_desig": "Teacher", "sup_phone": "8763456633"}, "204": {"booth": "KANTEKOLI-II", "blo": "Narmada Prusty", "blo_desig": "AWW", "blo_phone": "9668010074", "sup": "Madan Mohan Mallik", "sup_desig": "Teacher", "sup_phone": "8763456633"}, "205": {"booth": "SARADHAPUR-I", "blo": "Minakhi Muduli", "blo_desig": "AWW", "blo_phone": "6371140716", "sup": "Madan Mohan Mallik", "sup_desig": "Teacher", "sup_phone": "8763456633"}, "206": {"booth": "SARADHAPUR-II", "blo": "Sumati Maharana", "blo_desig": "AWW", "blo_phone": "8658083231", "sup": "Madan Mohan Mallik", "sup_desig": "Teacher", "sup_phone": "8763456633"}, "207": {"booth": "Punarakhandi", "blo": "Geetanjali Sahu", "blo_desig": "AWW", "blo_phone": "9090582624", "sup": "Sanatan Behera", "sup_desig": "Teacher", "sup_phone": "9861150059"}, "208": {"booth": "SAPUAPALLI-I", "blo": "Deepak Kumar Roula", "blo_desig": "Teacher", "blo_phone": "9861104185", "sup": "Madan Mohan Mallik", "sup_desig": "Teacher", "sup_phone": "8763456633"}, "209": {"booth": "SAPUAPALLI-II", "blo": "Tukuna Kumar Nayak", "blo_desig": "Teacher", "blo_phone": "7381749194", "sup": "Madan Mohan Mallik", "sup_desig": "Teacher", "sup_phone": "8763456633"}, "210": {"booth": "NIMIGAM-I", "blo": "Rina Mahankuda", "blo_desig": "AWW", "blo_phone": "9348134220", "sup": "Madan Mohan Mallik", "sup_desig": "Teacher", "sup_phone": "8763456633"}, "211": {"booth": "NIMIGAM-II", "blo": "Amaresh Chandra Sahu", "blo_desig": "Teacher", "blo_phone": "8456971770", "sup": "Madan Mohan Mallik", "sup_desig": "Teacher", "sup_phone": "8763456633"}, "212": {"booth": "BADI AMBAGAM-I", "blo": "Chandan Panigrahy", "blo_desig": "Teacher", "blo_phone": "9658376439", "sup": "Jadab Sahu", "sup_desig": "Teacher", "sup_phone": "9348549560"}, "213": {"booth": "BADI AMBAGAM-II", "blo": "Ananga Manjari Panda", "blo_desig": "AWW", "blo_phone": "8093962603", "sup": "Jadab Sahu", "sup_desig": "Teacher", "sup_phone": "9348549560"}, "214": {"booth": "PUTIAPADAR", "blo": "Babita Gantayat", "blo_desig": "AWW", "blo_phone": "6371959822", "sup": "Jadab Sahu", "sup_desig": "Teacher", "sup_phone": "9348549560"}, "215": {"booth": "DIGAPADA", "blo": "Suresh Chandra Das", "blo_desig": "Teacher", "blo_phone": "9337200413", "sup": "Jadab Sahu", "sup_desig": "Teacher", "sup_phone": "9348549560"}, "216": {"booth": "BALAKRISHNAPUR-I", "blo": "Sunita Nayak", "blo_desig": "Teacher", "blo_phone": "9348395885", "sup": "Jadab Sahu", "sup_desig": "Teacher", "sup_phone": "9348549560"}, "217": {"booth": "BALAKRISHNAPUR-II", "blo": "Pinki Routa", "blo_desig": "AWW", "blo_phone": "7978653664", "sup": "Jadab Sahu", "sup_desig": "Teacher", "sup_phone": "9348549560"}, "218": {"booth": "DHOBADI", "blo": "Sujata Panda", "blo_desig": "AWW", "blo_phone": "9937112862", "sup": "Prakash Sethy", "sup_desig": "Teacher", "sup_phone": "8658154100"}, "219": {"booth": "BELAGAM-I", "blo": "Suruma Sundari Sahu", "blo_desig": "AWW", "blo_phone": "9937746394", "sup": "Susanta Kumar Padhy", "sup_desig": "Teacher", "sup_phone": "9078961931"}, "220": {"booth": "BELAGAM-II", "blo": "Suprava Das", "blo_desig": "AWW", "blo_phone": "8984469547", "sup": "Susanta Kumar Padhy", "sup_desig": "Teacher", "sup_phone": "9078961931"}, "221": {"booth": "BELAGAM-III", "blo": "Arati Panda", "blo_desig": "Teacher", "blo_phone": "9938963725", "sup": "Susanta Kumar Padhy", "sup_desig": "Teacher", "sup_phone": "9078961931"}, "222": {"booth": "PATTAPUR-I", "blo": "Nilakantha Sabara", "blo_desig": "Teacher", "blo_phone": "9938761823", "sup": "Prakash Sethy", "sup_desig": "Teacher", "sup_phone": "8658154100"}, "223": {"booth": "PATTAPUR-II", "blo": "Tukuna Parida", "blo_desig": "Teacher", "blo_phone": "9777811501", "sup": "Prakash Sethy", "sup_desig": "Teacher", "sup_phone": "8658154100"}, "224": {"booth": "SAHAPUR-I", "blo": "Bikram Kumar Sahu", "blo_desig": "Teacher", "blo_phone": "8249484851", "sup": "Prakash Sethy", "sup_desig": "Teacher", "sup_phone": "8658154100"}, "225": {"booth": "SAHAPUR-III", "blo": "Ajaya Kumar Swain", "blo_desig": "Teacher", "blo_phone": "7788888286", "sup": "Prakash Sethy", "sup_desig": "Teacher", "sup_phone": "8658154100"}, "226": {"booth": "Hantosh", "blo": "Ameer Padhi", "blo_desig": "Teacher", "blo_phone": "8908845682", "sup": "Prakash Sethy", "sup_desig": "Teacher", "sup_phone": "8658154100"}, "227": {"booth": "SAHAPUR-II", "blo": "Sanjeet Nahamajhi", "blo_desig": "Teacher", "blo_phone": "7751837562", "sup": "Prakash Sethy", "sup_desig": "Teacher", "sup_phone": "8658154100"}, "228": {"booth": "SIKHARAPUR-I", "blo": "Sukanta Kumar Panda", "blo_desig": "Teacher", "blo_phone": "9861407720", "sup": "Prakash Sethy", "sup_desig": "Teacher", "sup_phone": "8658154100"}, "229": {"booth": "SIKHARAPUR-II", "blo": "Mitu Mallick", "blo_desig": "Teacher", "blo_phone": "8895512935", "sup": "Prakash Sethy", "sup_desig": "Teacher", "sup_phone": "8658154100"}, "230": {"booth": "BHABANDHA-I", "blo": "Sanjukta Panigrahi", "blo_desig": "AWW", "blo_phone": "6371384626", "sup": "Prakash Sethy", "sup_desig": "Teacher", "sup_phone": "8658154100"}, "231": {"booth": "BHABANDHA-II", "blo": "Babishri Sashmal", "blo_desig": "AWW", "blo_phone": "9178428758", "sup": "Prakash Sethy", "sup_desig": "Teacher", "sup_phone": "8658154100"}, "232": {"booth": "Suryanarayanpur", "blo": "E.P. Radha", "blo_desig": "AWW", "blo_phone": "9178773951", "sup": "Prakash Sethy", "sup_desig": "Teacher", "sup_phone": "8658154100"}};
 const SUPERVISORS_DATA={"Ashok Swain": {"desig": "Teacher", "phone": "9692369887", "booths": [1, 2, 3, 4, 5, 6, 7, 8, 10, 25, 26], "aero": "Tahasildar Shergada"}, "Jaganath Sethy": {"desig": "Teacher", "phone": "9437846836", "booths": [9, 19, 20, 21, 22, 23, 24, 36, 37, 38], "aero": "Tahasildar Shergada"}, "Driver Bisoyi": {"desig": "Teacher", "phone": "7787882230", "booths": [11, 12, 13, 14, 15, 16, 17, 18], "aero": "Tahasildar Shergada"}, "Santosh Panigrahy": {"desig": "Teacher", "phone": "9937860882", "booths": [27, 28, 29, 30, 31, 32, 33, 34, 35, 46, 47, 48], "aero": "ABDO Shergada"}, "Anil Kumar Tripathy": {"desig": "Teacher", "phone": "7381558310", "booths": [39, 40, 41, 42, 43, 52, 53, 54, 55, 56, 57], "aero": "Tahasildar Shergada"}, "Susanta Kumar Pradhan": {"desig": "Teacher", "phone": "9938782750", "booths": [44, 45, 49, 50, 51, 58, 59, 60, 61, 62], "aero": "BDO Shergada"}, "Pratap Polai": {"desig": "Teacher", "phone": "7787923852", "booths": [63, 64, 65, 66, 67, 72, 73, 74, 75, 76], "aero": "BDO Shergada"}, "Debabrata Pattanayak": {"desig": "Teacher", "phone": "9861713324", "booths": [68, 69, 70, 71, 84, 85, 86, 87, 88, 89], "aero": "BDO Shergada"}, "Kalakar Prusty": {"desig": "Teacher", "phone": "9861583733", "booths": [77, 78, 79, 80, 81, 82, 83, 170, 171, 172, 173], "aero": "ABDO Shergada"}, "D.Keshab Rao": {"desig": "Teacher", "phone": "8917373899", "booths": [90, 91, 92, 114, 115, 116, 117, 118, 119, 120, 121], "aero": "EO Hinjili Municipality"}, "Tarini Charan Nahak": {"desig": "Teacher", "phone": "9861360916", "booths": [93, 94, 95, 96, 98, 99, 100, 101, 106, 107], "aero": "BDO Shergada"}, "Arun Kumar Swain": {"desig": "Teacher", "phone": "7064247350", "booths": [97, 102, 103, 104, 105, 108, 109, 110, 111, 112, 113], "aero": "ABDO Shergada, BDO Shergada"}, "Sanatan Behera": {"desig": "Teacher", "phone": "9861150059", "booths": [122, 123, 161, 162, 163, 165, 166, 167, 168, 169, 207], "aero": "BDO Hinjilicut, EO Hinjili Municipality, Tahasildar Hinjilicut"}, "Akhila Kumar Panda": {"desig": "CRCC", "phone": "7978395041", "booths": [124, 125, 126, 127, 128, 129, 130, 131, 132, 133], "aero": "EO Hinjili Municipality"}, "Raghunath Sahu": {"desig": "Teacher", "phone": "9439363740", "booths": [134, 135, 136, 137, 138, 139, 140, 141, 164], "aero": "EO Hinjili Municipality"}, "Gopal Krishna Swain": {"desig": "CRCC", "phone": "9938964340", "booths": [142, 143, 149, 150, 151, 152, 156, 157, 158], "aero": "BDO Hinjilicut"}, "Rama Hari Dash": {"desig": "Teacher", "phone": "9438156511", "booths": [144, 145, 146, 147, 148], "aero": "BDO Hinjilicut"}, "Jadab Sahu": {"desig": "Teacher", "phone": "9348549560", "booths": [153, 154, 155, 159, 160, 212, 213, 214, 215, 216, 217], "aero": "BDO Hinjilicut, Tahasildar Hinjilicut"}, "Kailas Chandra Sahu": {"desig": "Teacher", "phone": "8328894614", "booths": [174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184], "aero": "BDO Hinjilicut"}, "Madan Mohan Mallik": {"desig": "Teacher", "phone": "8763456633", "booths": [185, 201, 202, 203, 204, 205, 206, 208, 209, 210, 211], "aero": "BDO Hinjilicut, Tahasildar Hinjilicut"}, "Suresh Kumar Sahu": {"desig": "Teacher", "phone": "9078473122", "booths": [186, 187, 188, 189, 190, 191, 198, 199, 200], "aero": "BDO Hinjilicut, Tahasildar Hinjilicut"}, "Susanta Kumar Padhy": {"desig": "Teacher", "phone": "9078961931", "booths": [192, 193, 194, 195, 196, 197, 219, 220, 221], "aero": "Tahasildar Hinjilicut"}, "Prakash Sethy": {"desig": "Teacher", "phone": "8658154100", "booths": [218, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232], "aero": "Tahasildar Hinjilicut"}};
 const AERO_MAP={"BDO Shergada":[44,45,49,50,51,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,84,85,86,87,88,89,93,94,95,96,97,98,99,100,101,106,107],"BDO Hinjilicut":[142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,165,166,167,168,169,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191],"Tahasildar Hinjilicut":[192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232],"Tahasildar Shergada":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,36,37,38,39,40,41,42,43,52,53,54,55,56,57],"EO Hinjili Municipality":[90,91,92,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,164],"ABDO Shergada":[27,28,29,30,31,32,33,34,35,46,47,48,77,78,79,80,81,82,83,102,103,104,105,108,109,110,111,112,113,170,171,172,173]};
@@ -825,7 +853,7 @@ const SUP_NAMES=Object.keys(SUPERVISORS_DATA).sort();
 let selectedSupNames=new Set(SUP_NAMES);
 let _supSelectedAeros=new Set(AERO_NAMES);
 let supDistChart=null,supProgressChart=null,supDigiChart=null,supEFChart=null;
-const sortState={'dist-range':{col:'pct',dir:'desc'},'digi-range':{col:'pct',dir:'desc'},'cmp':{col:'distpct',dir:'desc'},'supcmp':{col:'distpct',dir:'desc'}};
+const sortState={'dist-range':{col:'pct',dir:'desc'},'digi-range':{col:'pct',dir:'desc'},'cmp':{col:'distpct',dir:'desc'},'supcmp':{col:'distpct',dir:'desc'},'fb':{col:'distpct',dir:'desc'}};
 
 const aeroOf=pn=>BOOTH_AERO[pn]||'';
 const aeroColor=a=>AERO_COLORS[AERO_NAMES.indexOf(a)]||'#888';
@@ -893,7 +921,8 @@ function renderSnapshotKPIs(data){
   document.getElementById('k-blo-num').textContent='';
   // Pending
   document.getElementById('k-pending-pct').textContent=s.pendPctOfElectors.toFixed(2)+'%';
-  document.getElementById('k-pending-abs').textContent=fmt(s.pend)+' EFs submitted but not yet verified by BLO';
+  document.getElementById('k-pending-abs').textContent=fmt(s.pend)+' of '+fmt(s.e)+' electors';
+  const kpn=document.getElementById('k-pending-num');if(kpn)kpn.textContent='';
 }
 
 // ── MASTER KPIs (compact) ─────────────────────────────────────────
@@ -978,6 +1007,7 @@ document.addEventListener('click',e=>{
   const cur=sortState[tbl];sortState[tbl]={col,dir:cur.col===col&&cur.dir==='desc'?'asc':'desc'};
   if(tbl==='cmp'){renderCmpTableSorted();return;}
   if(tbl==='supcmp'){renderSupTableSorted();return;}
+  if(tbl==='fb'){applyFilters();return;}
   const mode=tbl==='dist-range'?'dist':'digi';
   const af=tbl==='dist-range'?masterDistAero:masterDigiAero;
   renderBandTable(af?filt(todayData,new Set([af])):todayData,mode,tbl.replace('-range','')+'-range-tbody',tbl);
@@ -1059,8 +1089,8 @@ function buildCmpBar(){
 }
 
 // ── FILE LOADING ──────────────────────────────────────────────────
-function parseExcelRows(rows){return rows.map(r=>{const pn=Number(r['Part Number']),e=Number(r['Total Elector']||0),d=Number(r['Total EFs Distributed']||0);return{pn,e,d,pct:e>0?d/e*100:0,dg:Number(r['Total EFs Digitized']||0),v:Number(r['EFs Verified by BLO']||0),tr:Number(r['Trained Blo Count']||0),tb:Number(r['Total Blo Count']||0),pend:Number(r['EFs Submitted by Elector ( Not verified by BLO)']||0)};}).filter(r=>Number.isInteger(r.pn)&&r.pn>=1&&r.pn<=500&&r.e>0);}
-function parseRows(file,cb){const r=new FileReader();r.onload=e=>{const wb=XLSX.read(e.target.result,{type:'array'});cb(XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]));};r.readAsArrayBuffer(file);}
+
+
 
 
 
@@ -1079,39 +1109,12 @@ buildCmpBar();
 refreshView();
 
 // ── UPLOAD DROPDOWN ───────────────────────────────────────────────
-function toggleUpload(e){
-  e.stopPropagation();
-  const menu=document.getElementById('upload-menu');
-  const dd=document.getElementById('upload-dropdown');
-  const isOpen=menu.classList.contains('open');
-  menu.classList.toggle('open',!isOpen);
-  dd.classList.toggle('open',!isOpen);
-}
+
 // Close dropdown when clicking anywhere else
-document.addEventListener('click',()=>{
-  const menu=document.getElementById('upload-menu');
-  const dd=document.getElementById('upload-dropdown');
-  if(menu){menu.classList.remove('open');dd.classList.remove('open');}
-});
+document.addEventListener('click',()=>closeReportMenu());
 // Close dropdown after file selected, update badge
-function loadToday(ev){
-  const menu=document.getElementById('upload-menu');
-  const dd=document.getElementById('upload-dropdown');
-  if(menu){menu.classList.remove('open');dd.classList.remove('open');}
-  const f=ev.target.files[0];if(!f)return;
-  const label=f.name.replace(/\.(xlsx|xls)$/i,'').replace(/_/g,' ');
-  document.getElementById('today-dbadge').textContent='Today: '+label;
-  parseRows(f,rows=>{todayData=parseExcelRows(rows);snapshotDay(todayData,label);refreshView();});
-}
-function loadPrev(ev){
-  const menu=document.getElementById('upload-menu');
-  const dd=document.getElementById('upload-dropdown');
-  if(menu){menu.classList.remove('open');dd.classList.remove('open');}
-  const f=ev.target.files[0];if(!f)return;
-  const label=f.name.replace(/\.(xlsx|xls)$/i,'').replace(/_/g,' ');
-  document.getElementById('prev-dbadge').textContent='Yesterday: '+label;
-  parseRows(f,rows=>{const pd=parseExcelRows(rows);prevMap={};prevDigiMap={};pd.forEach(r=>{prevMap[r.pn]=r.pct;prevDigiMap[r.pn]=digiPct(r);});snapshotDay(pd,label);refreshView();});
-}
+
+
 
 // ── SAVE AS JPEG ──────────────────────────────────────────────────
 function saveAsJPEG(){
@@ -1205,10 +1208,9 @@ function applyFilters(){
   const supSel=document.getElementById('fb-sup')?.value||'';
   const q=(document.getElementById('fb-search')?.value||'').toLowerCase().trim();
   const mode=activeFilterMode;
-
   const getPct=r=>viewMode==='digi'?digiPct(r):r.pct;
 
-  // Start with all data, apply dropdown filters first
+  // Filter pool
   let pool=todayData.filter(r=>{
     if(aeroSel&&aeroOf(r.pn)!==aeroSel)return false;
     if(supSel&&(BOOTH_DATA[r.pn]||{}).sup!==supSel)return false;
@@ -1221,7 +1223,7 @@ function applyFilters(){
     return true;
   });
 
-  // Apply Top/Bottom mode
+  // Top/Bottom filter mode
   if(mode==='top'){
     const n=parseInt(document.getElementById('fb-top-n').value)||0;
     const pct=parseFloat(document.getElementById('fb-top-pct').value);
@@ -1234,21 +1236,44 @@ function applyFilters(){
     pool.sort((a,b)=>getPct(a)-getPct(b));
     if(!isNaN(pct)) pool=pool.filter(r=>getPct(r)<=pct);
     if(n>0) pool=pool.slice(0,n);
-  } else {
-    pool.sort((a,b)=>getPct(b)-getPct(a));
   }
 
-  // Update count
-  document.getElementById('fb-count').textContent=pool.length+' booth'+(pool.length!==1?'s':'');
+  // Apply column sort from sortState.fb
+  const {col,dir}=sortState['fb'];
+  pool.sort((a,b)=>{
+    let va,vb;
+    const bda=BOOTH_DATA[a.pn]||{}, bdb=BOOTH_DATA[b.pn]||{};
+    if(col==='pn'){va=a.pn;vb=b.pn;}
+    else if(col==='blo'){va=(bda.blo||'').toLowerCase();vb=(bdb.blo||'').toLowerCase();}
+    else if(col==='sup'){va=(bda.sup||'').toLowerCase();vb=(bdb.sup||'').toLowerCase();}
+    else if(col==='aero'){va=aeroOf(a.pn);vb=aeroOf(b.pn);}
+    else if(col==='e'){va=a.e;vb=b.e;}
+    else if(col==='d'){va=a.d;vb=b.d;}
+    else if(col==='distpct'){va=a.pct;vb=b.pct;}
+    else if(col==='dg'){va=a.dg;vb=b.dg;}
+    else if(col==='digipct'){va=digiPct(a);vb=digiPct(b);}
+    else if(col==='v'){va=a.v;vb=b.v;}
+    else{va=0;vb=0;}
+    if(typeof va==='string') return dir==='asc'?va.localeCompare(vb):vb.localeCompare(va);
+    return dir==='asc'?va-vb:vb-va;
+  });
 
-  // Mini KPIs for filtered set
+  // Update sort icons
+  document.querySelectorAll('th[data-tbl="fb"]').forEach(th=>{
+    th.classList.remove('sort-asc','sort-desc');
+    if(th.dataset.col===col) th.classList.add(dir==='asc'?'sort-asc':'sort-desc');
+  });
+
+  // Update count and mini KPIs
+  document.getElementById('fb-count').textContent=pool.length+' booth'+(pool.length!==1?'s':'');
   const ks=computeKPIs(pool);
-  const el=document.getElementById('fb-k-electors'); if(el) el.textContent=ks.e.toLocaleString('en-IN');
+  const fmt=n=>n.toLocaleString('en-IN');
+  const el=document.getElementById('fb-k-electors'); if(el) el.textContent=fmt(ks.e);
   const kd=document.getElementById('fb-k-dist'); if(kd) kd.textContent=ks.distPct.toFixed(2)+'%';
   const kg=document.getElementById('fb-k-digi'); if(kg) kg.textContent=ks.digitPctOfElectors.toFixed(2)+'%';
-  const kp=document.getElementById('fb-k-pending'); if(kp) kp.textContent=ks.pend.toLocaleString('en-IN');
+  const kp=document.getElementById('fb-k-pending'); if(kp) kp.textContent=fmt(ks.pend);
 
-  // Render table
+  // Render rows
   const green='#10B981',red='#EF4444';
   document.getElementById('fb-tbody').innerHTML=pool.map(r=>{
     const dp=digiPct(r),ac=aeroColor(aeroOf(r.pn)),a2=aeroOf(r.pn);
@@ -2000,10 +2025,7 @@ function toggleReportMenu(e){
   const menu=document.getElementById('report-menu');
   const dd=document.getElementById('report-dropdown');
   const isOpen=menu.classList.contains('open');
-  const um=document.getElementById('upload-menu');
-  const ud=document.getElementById('upload-dropdown');
-  if(um)um.classList.remove('open');
-  if(ud)ud.classList.remove('open');
+
   menu.classList.toggle('open',!isOpen);
   dd.classList.toggle('open',!isOpen);
 }
@@ -2116,7 +2138,7 @@ async function capturePage(label){
              id === 'aero-overlay' ||
              (cls.includes('upload-dropdown-menu') && el.querySelector && !el.classList.contains('hidden')) ||
              id === 'report-menu' ||
-             id === 'upload-menu';
+             false;
     }
   });
   return {canvas, label};
@@ -2236,7 +2258,7 @@ async function buildAllPages(){
       const id = el.id||'';
       const cls = (el.className&&typeof el.className==='string')?el.className:'';
       return id==='report-overlay'||id==='modal-overlay'||id==='aero-overlay'||
-             (cls.includes('upload-dropdown-menu'))||id==='report-menu'||id==='upload-menu';
+             (cls.includes('upload-dropdown-menu'))||id==='report-menu'||false;
     }
   });
   pages.push({canvas:canvas10, label:'10_Distribution_Range_Part1_BandBars'});
@@ -2261,7 +2283,7 @@ async function buildAllPages(){
       const id = el.id||'';
       const cls = (el.className&&typeof el.className==='string')?el.className:'';
       return id==='report-overlay'||id==='modal-overlay'||id==='aero-overlay'||
-             (cls.includes('upload-dropdown-menu'))||id==='report-menu'||id==='upload-menu';
+             (cls.includes('upload-dropdown-menu'))||id==='report-menu'||false;
     }
   });
   pages.push({canvas:canvas11, label:'11_Distribution_Range_Part2_Table'});
@@ -2361,8 +2383,710 @@ async function generateReport(format){
     restoreRState();
   }
 }
+  pages.forEach(({canvas,label})=>{
+        const b64 = canvas.toDataURL('image/jpeg',0.96).split(',')[1];
+        folder.file(label+'.jpg', b64, {base64:true});
+      });
+      const blob = await zip.generateAsync({
+        type:'blob', compression:'DEFLATE',
+        compressionOptions:{level:4}
+      });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href=url;
+      a.download=`Hinjili_${dateStr}.zip`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(()=>URL.revokeObjectURL(url),1000);
+      showToast(`✓ ZIP saved: Hinjili_${dateStr}.zip (${pages.length} images)`);
+    }
+  } catch(saveErr){
+    console.error('Save error:', saveErr);
+    showToast('✗ Save failed: '+saveErr.message);
+  } finally {
+    showProgressPanel(false);
+    restoreRState();
+  }
+}
 
+
+
+// ── AUTO-FETCH FROM GITHUB ────────────────────────────────────────
+let availableFiles = [];   // list of data files in the repo
+let currentFileDate = '';
+
+async function fetchFileList(){
+  const {owner, repo, branch, dataFolder} = GITHUB_CONFIG;
+  if(owner === 'YOUR_GITHUB_USERNAME') return; // not configured yet
+  try{
+    const url = `https://api.github.com/repos/${owner}/${repo}/contents/${dataFolder}?ref=${branch}`;
+    const res = await fetch(url, {headers:{'Accept':'application/vnd.github.v3+json'}});
+    if(!res.ok) return;
+    const files = await res.json();
+    availableFiles = files
+      .filter(f => f.name.match(/\.(xlsx|xls)$/i))
+      .sort((a,b) => b.name.localeCompare(a.name)); // newest first
+    if(availableFiles.length > 0){
+      updateFileSelector(availableFiles);
+      await loadFileFromGitHub(availableFiles[0]);
+    }
+  }catch(e){
+    console.log('GitHub fetch failed:', e.message);
+  }
+}
+
+async function loadFileFromGitHub(fileObj){
+  try{
+    const res = await fetch(fileObj.download_url);
+    if(!res.ok) return;
+    const buffer = await res.arrayBuffer();
+    const wb = XLSX.read(buffer, {type:'array'});
+    const rows = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]);
+    const parsed = parseExcelRows(rows);
+    if(parsed.length === 0) return;
+
+    // Extract date from filename e.g. Hinjili_2025-06-05.xlsx → "5 Jun 2025"
+    // Parse format: Hinjili_131_YYYYMMDD_HHMM.xlsx
+    const newFmt = fileObj.name.match(/_(\d{4})(\d{2})(\d{2})_(\d{2})(\d{2})/);
+    const oldFmt = fileObj.name.match(/(\d{4}[-_]\d{2}[-_]\d{2})/);
+    let label;
+    if(newFmt){
+      const [,yr,mo,dy,hh,mm] = newFmt;
+      const d = new Date(`${yr}-${mo}-${dy}T${hh}:${mm}`);
+      const slot = hh==='10'?'10 AM':hh==='14'?'2 PM':hh==='18'?'6 PM':`${hh}:${mm}`;
+      label = d.toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})+' · '+slot;
+    } else if(oldFmt){
+      label = new Date(oldFmt[1].replace(/_/g,'-')).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});
+    } else {
+      label = fileObj.name.replace(/\.(xlsx|xls)$/i,'');
+    }
+
+    todayData = parsed;
+    currentFileDate = label;
+    snapshotDay(todayData, label);
+    document.getElementById('today-dbadge').textContent = 'Data: ' + label;
+    document.getElementById('dev-status-text').textContent = 'Auto-loaded: ' + fileObj.name;
+    document.getElementById('dev-status-text').style.color = '#06D6A0';
+    refreshView();
+  }catch(e){
+    console.log('File load error:', e.message);
+  }
+}
+
+function updateFileSelector(files){
+  // Update the dev panel with a file history dropdown
+  const panel = document.getElementById('dev-file-history');
+  if(!panel) return;
+  panel.innerHTML = files.map((f,i)=>{
+    // Parse format: Hinjili_131_YYYYMMDD_HHMM.xlsx
+    const newFmt2 = f.name.match(/_(\d{4})(\d{2})(\d{2})_(\d{2})(\d{2})/);
+    const oldFmt2 = f.name.match(/(\d{4}[-_]\d{2}[-_]\d{2})/);
+    let label;
+    if(newFmt2){
+      const [,yr,mo,dy,hh,mm] = newFmt2;
+      const d = new Date(`${yr}-${mo}-${dy}`);
+      const slot = hh==='10'?'10 AM':hh==='14'?'2 PM':hh==='18'?'6 PM':`${hh}:${mm}`;
+      label = d.toLocaleDateString('en-IN',{day:'numeric',month:'short'})+' '+slot;
+    } else if(oldFmt2){
+      label = new Date(oldFmt2[1].replace(/_/g,'-')).toLocaleDateString('en-IN',{day:'numeric',month:'short'});
+    } else {
+      label = f.name.replace(/\.(xlsx|xls)$/i,'');
+    }
+    return `<option value="${i}">${label}${i===0?' (latest)':''}</option>`;
+  }).join('');
+  panel.style.display = 'block';
+  const hr=document.getElementById('dev-history-row');if(hr)hr.style.display='block';
+}
+
+// Called when user picks a historical date from dropdown
+async function loadHistoricalFile(idx){
+  if(availableFiles[idx]){
+    await loadFileFromGitHub(availableFiles[idx]);
+  }
+}
+
+// Auto-fetch on page load
+window.addEventListener('load', ()=>{
+  setTimeout(fetchFileList, 500); // slight delay to let everything init
+});
+// ── DEVELOPER UPLOAD PANEL ────────────────────────────────────────
+function toggleDevPanel(){
+  const panel = document.getElementById('dev-panel');
+  panel.classList.toggle('open');
+}
+// Close when clicking outside
+document.addEventListener('click', e=>{
+  const panel = document.getElementById('dev-panel');
+  const btn = document.getElementById('dev-btn');
+  if(panel && panel.classList.contains('open') &&
+     !panel.contains(e.target) && !btn.contains(e.target)){
+    panel.classList.remove('open');
+  }
+});
+
+function parseRows(file, cb){
+  const r = new FileReader();
+  r.onload = e => {
+    const wb = XLSX.read(e.target.result, {type:'array'});
+    cb(XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]));
+  };
+  r.readAsArrayBuffer(file);
+}
+
+function parseExcelRows(rows){
+  return rows.map(r=>{
+    const pn=Number(r['Part Number']),e=Number(r['Total Elector']||0),d=Number(r['Total EFs Distributed']||0);
+    return{pn,e,d,pct:e>0?d/e*100:0,
+      dg:Number(r['Total EFs Digitized']||0),
+      v:Number(r['EFs Verified by BLO']||0),
+      tr:Number(r['Trained Blo Count']||0),
+      tb:Number(r['Total Blo Count']||0),
+      pend:Number(r['EFs Submitted by Elector ( Not verified by BLO)']||0)
+    };
+  }).filter(r=>Number.isInteger(r.pn)&&r.pn>=1&&r.pn<=500&&r.e>0);
+}
+
+function devLoadToday(ev){
+  const f = ev.target.files[0]; if(!f) return;
+  const label = f.name.replace(/\.(xlsx|xls)$/i,'').replace(/_/g,' ');
+  document.getElementById('dev-today-name').textContent = f.name;
+  document.getElementById('today-dbadge').textContent = 'Today: ' + label;
+  parseRows(f, rows=>{
+    todayData = parseExcelRows(rows);
+    snapshotDay(todayData, label);
+    refreshView();
+    document.getElementById('dev-status-text').textContent = 'Live data loaded ✓';
+    document.getElementById('dev-status-text').style.color = '#06D6A0';
+  });
+}
+
+function devLoadPrev(ev){
+  const f = ev.target.files[0]; if(!f) return;
+  const label = f.name.replace(/\.(xlsx|xls)$/i,'').replace(/_/g,' ');
+  document.getElementById('dev-prev-name').textContent = f.name;
+  parseRows(f, rows=>{
+    const pd = parseExcelRows(rows);
+    prevMap = {}; prevDigiMap = {};
+    pd.forEach(r=>{ prevMap[r.pn]=r.pct; prevDigiMap[r.pn]=digiPct(r); });
+    snapshotDay(pd, label);
+    refreshView();
+    document.getElementById('dev-status-text').textContent = 'Yesterday loaded ✓';
+    document.getElementById('dev-status-text').style.color = '#3A86FF';
+  });
+}
 </script>
+
+<!-- PWA Service Worker Registration -->
+<script>
+if('serviceWorker' in navigator && location.protocol !== 'file:'){
+  // Service Worker only works over http/https, not file://
+  const swCode = `
+    const CACHE = 'hinjili-ef-v1';
+    const CDNS = [
+      'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js'
+    ];
+    self.addEventListener('install', e => {
+      e.waitUntil(
+        caches.open(CACHE).then(c => c.addAll(CDNS).catch(()=>{}))
+      );
+      self.skipWaiting();
+    });
+    self.addEventListener('activate', e => {
+      e.waitUntil(caches.keys().then(keys =>
+        Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))
+      ));
+      self.clients.claim();
+    });
+    self.addEventListener('fetch', e => {
+      if(e.request.url.includes('cdnjs.cloudflare.com')){
+        e.respondWith(
+          caches.match(e.request).then(r => r || fetch(e.request).then(res => {
+            const clone = res.clone();
+            caches.open(CACHE).then(c => c.put(e.request, clone));
+            return res;
+          }))
+        );
+      }
+    });
+  `;
+  const blob = new Blob([swCode], {type:'application/javascript'});
+  const swUrl = URL.createObjectURL(blob);
+  navigator.serviceWorker.register(swUrl, {scope:'/'})
+    .then(()=>console.log('SW registered'))
+    .catch(e=>console.log('SW failed (normal in file:// mode):', e.message));
+}
+</script>
+
+</body>
+</html
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- Report generation progress — small floating panel, doesn't block content -->
+<div id="report-overlay" style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1a2e;color:white;border-radius:14px;padding:14px 24px;z-index:2000;display:none;flex-direction:column;gap:8px;min-width:340px;box-shadow:0 8px 30px rgba(0,0,0,0.3);pointer-events:none;">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <div id="report-icon" style="font-size:18px;">📄</div>
+    <div>
+      <div style="font-size:13px;font-weight:700;" id="report-status">Generating report…</div>
+      <div style="font-size:11px;opacity:0.65;margin-top:1px;" id="report-substatus">Please wait</div>
+    </div>
+  </div>
+  <div style="width:100%;height:5px;background:rgba(255,255,255,0.15);border-radius:3px;overflow:hidden;">
+    <div id="report-progress-bar" style="height:100%;background:#3A86FF;border-radius:3px;width:0%;transition:width .4s ease;"></div>
+  </div>
+  <div style="font-size:10px;opacity:0.5;text-align:right;" id="report-step"></div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal-box">
+    <div class="modal-header">
+      <div>
+        <div class="modal-booth-name" id="modal-booth-name">—</div>
+        <div class="modal-booth-num" id="modal-booth-num">—</div>
+        <div id="modal-aero-badge"></div>
+      </div>
+      <button class="modal-close" onclick="closeModalDirect()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">BLO (Booth Level Officer)</div>
+        <div class="contact-card">
+          <div class="contact-name" id="modal-blo-name">—</div>
+          <div class="contact-desig" id="modal-blo-desig">—</div>
+          <div class="contact-phone"><span class="phone-icon">📞</span><a id="modal-blo-phone" href="#">—</a></div>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">BLO Supervisor</div>
+        <div class="contact-card">
+          <div class="contact-name" id="modal-sup-name">—</div>
+          <div class="contact-desig" id="modal-sup-desig">—</div>
+          <div class="contact-phone"><span class="phone-icon">📞</span><a id="modal-sup-phone" href="#">—</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+
+
+  <!-- 3 tabs: Snapshot, Detailed Info, Compare AEROs -->
+  <div class="view-toggle">
+    <button class="vt-btn active" onclick="setView('snapshot')">📸 Snapshot</button>
+    <button class="vt-btn" onclick="setView('master')">📋 Detailed Info</button>
+    <button class="vt-btn" onclick="setView('compare')">⚖️ Compare AEROs</button>
+    <button class="vt-btn" onclick="setView('compsup')">👥 Compare BLO Supervisors</button>
+    <button class="vt-btn" onclick="setView('filter')">🔍 Filter Booths</button>
+  </div>
+
+  <div class="filter-bar hidden" id="cmp-filter-bar"><span class="filter-label">Select AEROs:</span></div>
+
+  <!-- ══════════════ SNAPSHOT VIEW ══════════════ -->
+  <div id="snapshot-section">
+
+    <!-- Big KPI cards -->
+    <div class="kpi-grid" id="kpi-grid">
+      <!-- Total Electors (no %) -->
+      <div class="kpi-electors">
+        <div class="kpi-label">Total Electors</div>
+        <div class="kpi-pct" id="k-electors">—</div>
+        <div class="kpi-abs" id="k-electors-sub">—</div>
+      </div>
+      <div class="kpi-card blue">
+        <div class="kpi-label">EFs Distributed</div>
+        <div class="kpi-pct" id="k-dist-pct">—%</div>
+        <div class="kpi-abs" id="k-dist-abs">— of total electors</div>
+        <div class="kpi-sub" id="k-dist-num">—</div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-label">EFs Digitized</div>
+        <div class="kpi-pct" id="k-digit-pct">—%</div>
+        <div class="kpi-abs" id="k-digit-abs">— of total electors</div>
+        <div class="kpi-sub" id="k-digit-num">—</div>
+      </div>
+      <div class="kpi-card amber">
+        <div class="kpi-label">BLO Verified</div>
+        <div class="kpi-pct" id="k-verified-pct">—%</div>
+        <div class="kpi-abs" id="k-verified-abs">— of total electors</div>
+        <div class="kpi-sub" id="k-verified-num">—</div>
+      </div>
+      <div class="kpi-card teal">
+        <div class="kpi-label">BLOs Trained</div>
+        <div class="kpi-pct" id="k-blo-pct">—%</div>
+        <div class="kpi-abs" id="k-blo-abs">— of total BLOs</div>
+        <div class="kpi-sub" id="k-blo-num">—</div>
+      </div>
+    </div>
+
+    <!-- Pending as separate wide card -->
+    <div style="background:white;border-radius:12px;padding:14px 20px;border:0.5px solid #e2e6f0;margin-bottom:14px;display:flex;align-items:center;gap:20px;border-left:4px solid #ec4899;">
+      <div>
+        <div style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#94a3b8;margin-bottom:4px;">Pending Verification</div>
+        <div style="display:flex;align-items:baseline;gap:10px;">
+          <span style="font-size:32px;font-weight:800;color:#993556;" id="k-pending-pct">—%</span>
+          <span style="font-size:13px;color:#64748b;" id="k-pending-abs">— EFs submitted but not yet verified by BLO</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Performance tabs -->
+    <div class="perf-card">
+      <div class="inner-tabs">
+        <button class="itab active-best" id="sp-tab-best" onclick="switchSimpleTab('best')">🏆 Top 10 Performers <span class="itab-count">10</span></button>
+        <button class="itab" id="sp-tab-worst" onclick="switchSimpleTab('worst')">⚠️ Worst 10 Performers <span class="itab-count">10</span></button>
+        <button class="itab" id="sp-tab-imp" onclick="switchSimpleTab('imp')">📈 Top 10 Improved <span class="itab-count">10</span></button>
+      </div>
+      <div class="ipanel active" id="sp-panel-best">
+        <table><thead><tr><th>Rank</th><th>Booth</th><th>AERO</th><th>Electors</th><th>Distributed</th><th>Distribution %</th></tr></thead>
+        <tbody id="sp-best-tbody"></tbody></table>
+      </div>
+      <div class="ipanel" id="sp-panel-worst">
+        <table><thead><tr><th>Rank</th><th>Booth</th><th>AERO</th><th>Electors</th><th>Distributed</th><th>Distribution %</th></tr></thead>
+        <tbody id="sp-worst-tbody"></tbody></table>
+      </div>
+      <div class="ipanel" id="sp-panel-imp">
+        <table><thead><tr><th>Rank</th><th>Booth</th><th>AERO</th><th>Yesterday %</th><th>Today %</th><th>Abs. Numbers</th><th>Gain %</th></tr></thead>
+        <tbody id="sp-imp-tbody"></tbody></table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ DETAILED INFO VIEW ══════════════ -->
+  <div class="hidden" id="master-section">
+    <div class="master-outer">
+      <div class="mo-tabs">
+        <button class="mo-tab active-dist" id="mo-dist" onclick="switchMaster('dist')">📦 EF Distribution</button>
+        <button class="mo-tab" id="mo-digi" onclick="switchMaster('digi')">💻 EF Digitization</button>
+      </div>
+
+      <!-- Distribution panel -->
+      <div class="mo-panel active" id="mo-panel-dist">
+        <div class="filter-bar" id="master-dist-filter" style="margin-bottom:14px;"></div>
+        <div class="mkpi-grid">
+          <div class="mkpi"><div class="lbl">Total Electors</div><div class="val" id="md-electors">—</div></div>
+          <div class="mkpi blue"><div class="lbl">EFs Distributed</div><div class="val" id="md-dist">—</div><div class="sub" id="md-dist-pct">—</div></div>
+          <div class="mkpi green"><div class="lbl">EFs Digitized</div><div class="val" id="md-digit">—</div><div class="sub" id="md-digit-pct">—</div></div>
+          <div class="mkpi amber"><div class="lbl">BLO Verified</div><div class="val" id="md-verified">—</div><div class="sub" id="md-verified-pct">—</div></div>
+          <div class="mkpi teal"><div class="lbl">BLOs Trained</div><div class="val" id="md-blo">—</div><div class="sub" id="md-blo-pct">—</div></div>
+          <div class="mkpi pink"><div class="lbl">Pending Verification</div><div class="val" id="md-pending">—</div></div>
+        </div>
+        <div class="inner-tabs" style="margin-bottom:0;">
+          <button class="itab active-best" id="dist-tab-best" onclick="switchInner('dist','best')">🏆 Top 10 <span class="itab-count">10</span></button>
+          <button class="itab" id="dist-tab-worst" onclick="switchInner('dist','worst')">⚠️ Worst 10 <span class="itab-count">10</span></button>
+          <button class="itab" id="dist-tab-imp" onclick="switchInner('dist','imp')">📈 Top 10 Improved <span class="itab-count">10</span></button>
+          <button class="itab" id="dist-tab-range" onclick="switchInner('dist','range')">📊 Distribution Range <span class="itab-count" id="dist-range-count">232</span></button>
+        </div>
+        <div class="ipanel active" id="dist-panel-best"><table><thead><tr><th>Rank</th><th>Booth</th><th>AERO</th><th>Electors</th><th>Distributed</th><th>Distribution %</th></tr></thead><tbody id="dist-best-tbody"></tbody></table></div>
+        <div class="ipanel" id="dist-panel-worst"><table><thead><tr><th>Rank</th><th>Booth</th><th>AERO</th><th>Electors</th><th>Distributed</th><th>Distribution %</th></tr></thead><tbody id="dist-worst-tbody"></tbody></table></div>
+        <div class="ipanel" id="dist-panel-imp"><table><thead><tr><th>Rank</th><th>Booth</th><th>AERO</th><th>Yesterday %</th><th>Today %</th><th>Abs. Numbers</th><th>Gain %</th></tr></thead><tbody id="dist-imp-tbody"></tbody></table></div>
+        <div class="ipanel" id="dist-panel-range">
+          <div class="band-summary" id="dist-chips"></div>
+          <div class="band-bars" id="dist-bars"></div>
+          <table><thead><tr>
+            <th class="sortable" data-col="pn" data-tbl="dist-range">Booth <span class="sort-icon"></span></th>
+            <th class="sortable" data-col="blo" data-tbl="dist-range">BLO Name <span class="sort-icon"></span></th>
+            <th class="sortable" data-col="aero" data-tbl="dist-range">AERO <span class="sort-icon"></span></th>
+            <th class="sortable" data-col="e" data-tbl="dist-range">Electors <span class="sort-icon"></span></th>
+            <th class="sortable" data-col="d" data-tbl="dist-range">Distributed <span class="sort-icon"></span></th>
+            <th class="sortable" data-col="pct" data-tbl="dist-range">Dist % <span class="sort-icon"></span></th>
+            <th>Band</th>
+          </tr></thead><tbody id="dist-range-tbody"></tbody></table>
+        </div>
+      </div>
+
+      <!-- Digitization panel -->
+      <div class="mo-panel" id="mo-panel-digi">
+        <div class="filter-bar" id="master-digi-filter" style="margin-bottom:14px;"></div>
+        <div class="mkpi-grid">
+          <div class="mkpi"><div class="lbl">Total Electors</div><div class="val" id="mg-electors">—</div></div>
+          <div class="mkpi blue"><div class="lbl">EFs Distributed</div><div class="val" id="mg-dist">—</div><div class="sub" id="mg-dist-pct">—</div></div>
+          <div class="mkpi green"><div class="lbl">EFs Digitized</div><div class="val" id="mg-digit">—</div><div class="sub" id="mg-digit-pct">—</div></div>
+          <div class="mkpi amber"><div class="lbl">BLO Verified</div><div class="val" id="mg-verified">—</div><div class="sub" id="mg-verified-pct">—</div></div>
+          <div class="mkpi teal"><div class="lbl">BLOs Trained</div><div class="val" id="mg-blo">—</div><div class="sub" id="mg-blo-pct">—</div></div>
+          <div class="mkpi pink"><div class="lbl">Pending Verification</div><div class="val" id="mg-pending">—</div></div>
+        </div>
+        <div class="inner-tabs" style="margin-bottom:0;">
+          <button class="itab active-best" id="digi-tab-best" onclick="switchInner('digi','best')">🏆 Top 10 <span class="itab-count">10</span></button>
+          <button class="itab" id="digi-tab-worst" onclick="switchInner('digi','worst')">⚠️ Worst 10 <span class="itab-count">10</span></button>
+          <button class="itab" id="digi-tab-imp" onclick="switchInner('digi','imp')">📈 Top 10 Improved <span class="itab-count">10</span></button>
+          <button class="itab" id="digi-tab-range" onclick="switchInner('digi','range')">📊 Digitization Range <span class="itab-count" id="digi-range-count">232</span></button>
+        </div>
+        <div class="ipanel active" id="digi-panel-best"><table><thead><tr><th>Rank</th><th>Booth</th><th>AERO</th><th>Distributed</th><th>Digitized</th><th>Digitization %</th></tr></thead><tbody id="digi-best-tbody"></tbody></table></div>
+        <div class="ipanel" id="digi-panel-worst"><table><thead><tr><th>Rank</th><th>Booth</th><th>AERO</th><th>Distributed</th><th>Digitized</th><th>Digitization %</th></tr></thead><tbody id="digi-worst-tbody"></tbody></table></div>
+        <div class="ipanel" id="digi-panel-imp"><table><thead><tr><th>Rank</th><th>Booth</th><th>AERO</th><th>Yesterday %</th><th>Today %</th><th>Abs. Numbers</th><th>Gain %</th></tr></thead><tbody id="digi-imp-tbody"></tbody></table></div>
+        <div class="ipanel" id="digi-panel-range">
+          <div class="band-summary" id="digi-chips"></div>
+          <div class="band-bars" id="digi-bars"></div>
+          <table><thead><tr>
+            <th class="sortable" data-col="pn" data-tbl="digi-range">Booth <span class="sort-icon"></span></th>
+            <th class="sortable" data-col="blo" data-tbl="digi-range">BLO Name <span class="sort-icon"></span></th>
+            <th class="sortable" data-col="aero" data-tbl="digi-range">AERO <span class="sort-icon"></span></th>
+            <th class="sortable" data-col="e" data-tbl="digi-range">Electors <span class="sort-icon"></span></th>
+            <th class="sortable" data-col="d" data-tbl="digi-range">Distributed <span class="sort-icon"></span></th>
+            <th class="sortable" data-col="dg" data-tbl="digi-range">Digitized <span class="sort-icon"></span></th>
+            <th class="sortable" data-col="pct" data-tbl="digi-range">Digi % <span class="sort-icon"></span></th>
+            <th>Band</th>
+          </tr></thead><tbody id="digi-range-tbody"></tbody></table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ COMPARE VIEW ══════════════ -->
+  <div class="hidden" id="compare-section">
+    <div class="cmp-wrap">
+      <table class="cmp-table"><thead><tr>
+  <th class="sortable" data-col="aero" data-tbl="cmp">AERO <span class="sort-icon"></span></th>
+  <th class="sortable" data-col="booths" data-tbl="cmp">Booths <span class="sort-icon"></span></th>
+  <th class="sortable" data-col="electors" data-tbl="cmp">Electors <span class="sort-icon"></span></th>
+  <th class="sortable" data-col="distributed" data-tbl="cmp">Distributed <span class="sort-icon"></span></th>
+  <th class="sortable" data-col="distpct" data-tbl="cmp">Dist % <span class="sort-icon"></span></th>
+  <th class="sortable" data-col="digitized" data-tbl="cmp">Digitized <span class="sort-icon"></span></th>
+  <th class="sortable" data-col="verified" data-tbl="cmp">BLO Verified <span class="sort-icon"></span></th>
+  <th class="sortable" data-col="trained" data-tbl="cmp">Trained <span class="sort-icon"></span></th>
+  <th class="sortable" data-col="pending" data-tbl="cmp">Pending <span class="sort-icon"></span></th>
+</tr></thead>
+      <tbody id="cmp-tbody"></tbody></table>
+    </div>
+    <div class="chart-grid">
+      <div class="chart-card"><div class="chart-title">Distribution % by AERO — Today</div><canvas id="cmpDistChart"></canvas></div>
+      <div class="chart-card"><div class="chart-title">Day-on-Day Distribution % Progress</div><canvas id="cmpProgressChart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- ══════ FILTER BOOTHS VIEW ══════ -->
+  
+  <!-- ══════ COMPARE SUPERVISORS VIEW ══════ -->
+  <div class="hidden" id="compsup-section">
+
+    <!-- Filter chips card -->
+    <div style="background:white;border-radius:10px;border:0.5px solid #e2e6f0;padding:14px 18px;margin-bottom:14px;">
+
+      <!-- Row 1: AERO filter -->
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px;">
+        <span style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#1a1a2e;flex-shrink:0;min-width:56px;background:#f1f5f9;padding:3px 8px;border-radius:5px;">AEROs</span>
+        <div id="sup-aero-chips" style="display:flex;gap:6px;flex-wrap:wrap;flex:1;"></div>
+      </div>
+
+      <!-- Divider -->
+      <div style="height:1px;background:#e2e8f0;margin:10px 0;"></div>
+
+      <!-- Row 2: Supervisor filter -->
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px;">
+        <span style="font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#64748b;flex-shrink:0;min-width:56px;">Supervisors</span>
+        <div id="sup-chip-bar" style="display:flex;gap:6px;flex-wrap:wrap;flex:1;"></div>
+      </div>
+
+      <!-- Select All / Reset -->
+      <div style="display:flex;gap:8px;">
+        <button onclick="selectAllSups()" style="padding:5px 14px;background:#1a1a2e;color:white;border:none;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;">✓ Select All</button>
+        <button onclick="deselectAllSups()" style="padding:5px 14px;background:#f1f5f9;color:#475569;border:1px solid #dde2f0;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;">✕ Deselect All</button>
+        <button onclick="resetSupSelection()" style="padding:5px 14px;background:#f1f5f9;color:#475569;border:1px solid #dde2f0;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;">↺ Reset</button>
+      </div>
+    </div>
+
+    <!-- KPI comparison table -->
+    <div style="background:white;border-radius:11px;border:0.5px solid #e2e6f0;overflow:auto;margin-bottom:14px;">
+      <table class="cmp-table">
+        <thead><tr>
+          <th class="sortable" data-col="name" data-tbl="supcmp">Supervisor <span class="sort-icon"></span></th>
+          <th class="sortable" data-col="aero" data-tbl="supcmp">AERO <span class="sort-icon"></span></th>
+          <th class="sortable" data-col="booths" data-tbl="supcmp">Booths <span class="sort-icon"></span></th>
+          <th class="sortable" data-col="electors" data-tbl="supcmp">Electors <span class="sort-icon"></span></th>
+          <th class="sortable" data-col="distributed" data-tbl="supcmp">Distributed <span class="sort-icon"></span></th>
+          <th class="sortable" data-col="distpct" data-tbl="supcmp">Dist % <span class="sort-icon"></span></th>
+          <th class="sortable" data-col="digitized" data-tbl="supcmp">Digitized <span class="sort-icon"></span></th>
+          <th class="sortable" data-col="digipct" data-tbl="supcmp">Digi % <span class="sort-icon"></span></th>
+          <th class="sortable" data-col="verified" data-tbl="supcmp">BLO Verified <span class="sort-icon"></span></th>
+          <th class="sortable" data-col="trained" data-tbl="supcmp">Trained <span class="sort-icon"></span></th>
+          <th class="sortable" data-col="pending" data-tbl="supcmp">Pending <span class="sort-icon"></span></th>
+        </tr></thead>
+        <tbody id="sup-cmp-tbody"></tbody>
+      </table>
+    </div>
+
+    <!-- Distribution % chart — full row -->
+    <div style="background:white;border-radius:11px;border:0.5px solid #e2e6f0;padding:16px 18px;margin-bottom:14px;">
+      <div class="chart-title">Distribution % by Supervisor — Today</div>
+      <div style="position:relative;"><canvas id="supDistChart"></canvas></div>
+    </div>
+
+    <!-- Day-on-Day progress — full row -->
+    <div style="background:white;border-radius:11px;border:0.5px solid #e2e6f0;padding:16px 18px;margin-bottom:14px;">
+      <div class="chart-title">Day-on-Day Distribution % Progress</div>
+      <div style="position:relative;"><canvas id="supProgressChart"></canvas></div>
+    </div>
+
+    <!-- Digitization % chart — full row -->
+    <div style="background:white;border-radius:11px;border:0.5px solid #e2e6f0;padding:16px 18px;margin-bottom:14px;">
+      <div class="chart-title">Digitization % by Supervisor — Today</div>
+      <div style="position:relative;"><canvas id="supDigiChart"></canvas></div>
+    </div>
+
+  </div>
+
+  <div class="hidden" id="filter-section">
+
+    <!-- ── Four dropdown filters ── -->
+    <div style="background:white;border-radius:12px;border:0.5px solid #e2e6f0;padding:18px 20px;margin-bottom:14px;">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#7a8399;margin-bottom:14px;">Filter Options</div>
+
+      <!-- Dropdowns row -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px;">
+        <div>
+          <label style="font-size:11px;font-weight:600;color:#64748b;display:block;margin-bottom:5px;">View by</label>
+          <select id="fb-view" onchange="applyFilters()" style="width:100%;padding:7px 10px;border:1.5px solid #dde2f0;border-radius:7px;font-size:12px;color:#1a1a2e;background:white;">
+            <option value="dist">EF Distribution</option>
+            <option value="digi">EF Digitization</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:11px;font-weight:600;color:#64748b;display:block;margin-bottom:5px;">AERO</label>
+          <select id="fb-aero" onchange="applyFilters()" style="width:100%;padding:7px 10px;border:1.5px solid #dde2f0;border-radius:7px;font-size:12px;color:#1a1a2e;background:white;">
+            <option value="">All AEROs</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:11px;font-weight:600;color:#64748b;display:block;margin-bottom:5px;">BLO Supervisor</label>
+          <select id="fb-sup" onchange="applyFilters()" style="width:100%;padding:7px 10px;border:1.5px solid #dde2f0;border-radius:7px;font-size:12px;color:#1a1a2e;background:white;">
+            <option value="">All Supervisors</option>
+<option value="Akhila Kumar Panda">Akhila Kumar Panda</option>
+<option value="Anil Kumar Tripathy">Anil Kumar Tripathy</option>
+<option value="Arun Kumar Swain">Arun Kumar Swain</option>
+<option value="Ashok Swain">Ashok Swain</option>
+<option value="D.Keshab Rao">D.Keshab Rao</option>
+<option value="Debabrata Pattanayak">Debabrata Pattanayak</option>
+<option value="Driver Bisoyi">Driver Bisoyi</option>
+<option value="Gopal Krishna Swain">Gopal Krishna Swain</option>
+<option value="Jadab Sahu">Jadab Sahu</option>
+<option value="Jaganath Sethy">Jaganath Sethy</option>
+<option value="Kailas Chandra Sahu">Kailas Chandra Sahu</option>
+<option value="Kalakar Prusty">Kalakar Prusty</option>
+<option value="Madan Mohan Mallik">Madan Mohan Mallik</option>
+<option value="Prakash Sethy">Prakash Sethy</option>
+<option value="Pratap Polai">Pratap Polai</option>
+<option value="Raghunath Sahu">Raghunath Sahu</option>
+<option value="Rama Hari Dash">Rama Hari Dash</option>
+<option value="Sanatan Behera">Sanatan Behera</option>
+<option value="Santosh Panigrahy">Santosh Panigrahy</option>
+<option value="Suresh Kumar Sahu">Suresh Kumar Sahu</option>
+<option value="Susanta Kumar Padhy">Susanta Kumar Padhy</option>
+<option value="Susanta Kumar Pradhan">Susanta Kumar Pradhan</option>
+<option value="Tarini Charan Nahak">Tarini Charan Nahak</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:11px;font-weight:600;color:#64748b;display:block;margin-bottom:5px;">Search Booth / BLO</label>
+          <input type="text" id="fb-search" placeholder="Type to search…" oninput="applyFilters()"
+            style="width:100%;padding:7px 10px;border:1.5px solid #dde2f0;border-radius:7px;font-size:12px;"/>
+        </div>
+      </div>
+
+      <!-- Three filter mode cards -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;align-items:start;">
+
+        <!-- Top N above X% -->
+        <div id="fb-card-top" style="border:1.5px solid #dde2f0;border-radius:10px;padding:14px 16px;cursor:pointer;transition:border-color .15s,box-shadow .15s;" onclick="activateFilter('top')">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+            <div id="fb-radio-top" style="width:16px;height:16px;border-radius:50%;border:2px solid #dde2f0;flex-shrink:0;transition:all .15s;background:white;"></div>
+            <span style="font-size:12px;font-weight:700;color:#1a1a2e;">Top Booths</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+            <span style="font-size:12px;color:#64748b;">Top</span>
+            <input type="number" id="fb-top-n" min="1" max="232" placeholder="N"
+              onclick="event.stopPropagation();activateFilter('top')"
+              oninput="activateFilter('top');applyFilters()"
+              style="width:58px;padding:6px 8px;border:1.5px solid #dde2f0;border-radius:7px;font-size:14px;font-weight:700;text-align:center;outline:none;"/>
+            <span style="font-size:12px;color:#64748b;">booths &#8805;</span>
+            <input type="number" id="fb-top-pct" min="0" max="100" step="0.01" placeholder="%"
+              onclick="event.stopPropagation();activateFilter('top')"
+              oninput="activateFilter('top');applyFilters()"
+              style="width:58px;padding:6px 8px;border:1.5px solid #dde2f0;border-radius:7px;font-size:14px;font-weight:700;text-align:center;outline:none;"/>
+            <span style="font-size:12px;color:#64748b;">%</span>
+          </div>
+          <div style="font-size:10.5px;color:#94a3b8;margin-top:8px;">Leave blank to show all, sorted highest first</div>
+        </div>
+
+        <!-- Bottom N below X% -->
+        <div id="fb-card-bottom" style="border:1.5px solid #dde2f0;border-radius:10px;padding:14px 16px;cursor:pointer;transition:border-color .15s,box-shadow .15s;" onclick="activateFilter('bottom')">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+            <div id="fb-radio-bottom" style="width:16px;height:16px;border-radius:50%;border:2px solid #dde2f0;flex-shrink:0;transition:all .15s;background:white;"></div>
+            <span style="font-size:12px;font-weight:700;color:#1a1a2e;">Bottom Booths</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+            <span style="font-size:12px;color:#64748b;">Bottom</span>
+            <input type="number" id="fb-bot-n" min="1" max="232" placeholder="N"
+              onclick="event.stopPropagation();activateFilter('bottom')"
+              oninput="activateFilter('bottom');applyFilters()"
+              style="width:58px;padding:6px 8px;border:1.5px solid #dde2f0;border-radius:7px;font-size:14px;font-weight:700;text-align:center;outline:none;"/>
+            <span style="font-size:12px;color:#64748b;">booths &#8804;</span>
+            <input type="number" id="fb-bot-pct" min="0" max="100" step="0.01" placeholder="%"
+              onclick="event.stopPropagation();activateFilter('bottom')"
+              oninput="activateFilter('bottom');applyFilters()"
+              style="width:58px;padding:6px 8px;border:1.5px solid #dde2f0;border-radius:7px;font-size:14px;font-weight:700;text-align:center;outline:none;"/>
+            <span style="font-size:12px;color:#64748b;">%</span>
+          </div>
+          <div style="font-size:10.5px;color:#94a3b8;margin-top:8px;">Leave blank to show all, sorted lowest first</div>
+        </div>
+
+        <!-- Clear All -->
+        <div id="fb-card-clear" style="border:1.5px solid #dde2f0;border-radius:10px;padding:14px 16px;cursor:pointer;transition:border-color .15s,box-shadow .15s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:110px;" onclick="resetFilters()">
+          <div style="width:42px;height:42px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:20px;">↺</div>
+          <span style="font-size:12px;font-weight:700;color:#475569;">Clear All Filters</span>
+          <span style="font-size:10.5px;color:#94a3b8;text-align:center;">Show all 232 booths</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results table -->
+    <div style="background:white;border-radius:12px;border:0.5px solid #e2e6f0;overflow:hidden;">
+      <div style="padding:12px 16px;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+        <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#7a8399;">Matching Booths</span>
+        <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+          <span style="font-size:12px;font-weight:700;color:#185FA5;" id="fb-count">232 booths</span>
+          <!-- Mini KPIs for filtered set -->
+          <span style="font-size:11px;color:#64748b;">Electors: <b id="fb-k-electors">—</b></span>
+          <span style="font-size:11px;color:#185FA5;">Dist: <b id="fb-k-dist">—%</b></span>
+          <span style="font-size:11px;color:#0f6e56;">Digi: <b id="fb-k-digi">—%</b></span>
+          <span style="font-size:11px;color:#993556;">Pending: <b id="fb-k-pending">—</b></span>
+        </div>
+      </div>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead><tr>
+            <th>Booth</th><th>BLO Name</th><th>Supervisor</th><th>AERO</th>
+            <th>Electors</th><th>Distributed</th><th>Dist %</th>
+            <th>Digitized</th><th>Digi %</th><th>BLO Verified</th>
+          </tr></thead>
+          <tbody id="fb-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════ AERO DRILL-DOWN OVERLAY ══════ -->
+  <div id="aero-overlay" style="position:fixed;inset:0;background:#f0f2f8;z-index:800;display:none;overflow-y:auto;transform:translateX(100%);transition:transform .3s ease;">
+    <div style="background:#1a1a2e;color:white;padding:12px 22px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:10;">
+      <button onclick="closeAeroOverlay()" style="background:rgba(255,255,255,0.15);border:none;color:white;padding:6px 14px;border-radius:20px;cursor:pointer;font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px;">← Back</button>
+      <div>
+        <div style="font-size:15px;font-weight:600;" id="overlay-aero-title">AERO Details</div>
+        <div style="font-size:10.5px;opacity:0.5;" id="overlay-aero-sub">BLO Supervisor breakdown</div>
+      </div>
+    </div>
+    <div style="padding:16px 20px;max-width:1400px;margin:0 auto;" id="overlay-content"></div>
+  </div>
+
+</div>
+
+
 
 <!-- PWA Service Worker Registration -->
 <script>
@@ -2408,6 +3132,57 @@ if('serviceWorker' in navigator){
     .catch(e=>console.log('SW failed (normal in file:// mode):', e.message));
 }
 </script>
+
+
+<!-- Dev login button (inconspicuous) -->
+<div id="dev-btn" onclick="toggleDevPanel()" title="">
+  <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:white;">
+    <circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/>
+  </svg>
+</div>
+
+<div id="dev-panel">
+  <div class="dev-header">
+    <span>⚙ Developer</span>
+    <button onclick="toggleDevPanel()">✕</button>
+  </div>
+  <div class="dev-body">
+    <div class="dev-row">
+      <div class="dev-label">Upload Data</div>
+      <label class="dev-upload-btn">
+        <span class="dev-icon" style="background:rgba(58,134,255,0.2);">📅</span>
+        <span>
+          <div>Today's EF file</div>
+          <div style="font-size:10px;color:rgba(255,255,255,0.35);margin-top:1px;" id="dev-today-name">No file loaded</div>
+        </span>
+        <input type="file" id="dev-today-file" accept=".xlsx,.xls" onchange="devLoadToday(event)"/>
+      </label>
+    </div>
+    <div class="dev-row">
+      <label class="dev-upload-btn">
+        <span class="dev-icon" style="background:rgba(6,214,160,0.15);">📆</span>
+        <span>
+          <div>Yesterday's EF file</div>
+          <div style="font-size:10px;color:rgba(255,255,255,0.35);margin-top:1px;" id="dev-prev-name">No file loaded</div>
+        </span>
+        <input type="file" id="dev-prev-file" accept=".xlsx,.xls" onchange="devLoadPrev(event)"/>
+      </label>
+    </div>
+    <div class="dev-row" id="dev-history-row" style="display:none;">
+      <div class="dev-label">Load Historical Date</div>
+      <select id="dev-file-history" onchange="loadHistoricalFile(this.value)"
+        style="width:100%;padding:8px 10px;border-radius:8px;background:rgba(255,255,255,0.08);
+               border:1px solid rgba(255,255,255,0.15);color:white;font-size:12px;cursor:pointer;">
+      </select>
+    </div>
+    <div class="dev-status" id="dev-status">
+      Status: <b id="dev-status-text">Using seed data</b>
+    </div>
+    <div style="font-size:9.5px;color:rgba(255,255,255,0.2);margin-top:8px;padding-top:6px;border-top:1px solid rgba(255,255,255,0.06);">
+      Auto-fetches latest from GitHub on load
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
